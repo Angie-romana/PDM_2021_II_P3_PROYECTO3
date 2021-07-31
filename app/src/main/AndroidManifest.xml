@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.pdm_2021_ii_p3_proyecto3">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PDM_2021_II_P3_PROYECTO3">
+        <activity
+            android:name=".CobroActivity"
+            android:exported="true"
+            android:label="@string/title_activity_cobro"
+            android:theme="@style/Theme.PDM_2021_II_P3_PROYECTO3.NoActionBar" />
+        <activity
+            android:name=".TipoEmpleadoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".JuzgadoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PrecioHistoricoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PrecioActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CasoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CaiActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SucursalActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ServicioActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ClienteActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AbogadoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
