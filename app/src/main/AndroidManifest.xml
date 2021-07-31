@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PDM_2021_II_P3_PROYECTO3">
         <activity
+            android:name=".PrincipalActivity"
+            android:exported="true" />
+        <activity
             android:name=".CobroActivity"
             android:exported="true"
             android:label="@string/title_activity_cobro"
