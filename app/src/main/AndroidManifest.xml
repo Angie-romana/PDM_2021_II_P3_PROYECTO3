@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PDM_2021_II_P3_PROYECTO3">
         <activity
+            android:name=".ExpedienteActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CasoEmpleadoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AudienciaDetalleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".indicioActivity"
+            android:exported="true" />
+        <activity
             android:name=".PrincipalActivity"
             android:exported="true" />
         <activity

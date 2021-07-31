@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondoactivity"
+    android:textAlignment="center"
+    tools:context=".AbogadoActivity">
+
+    <TextView
+        android:id="@+id/txv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Caso Empleado"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="normal|bold"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="62dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:layout_width="266dp"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:hint="Fecha Final"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="477dp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="266dp"
+        android:layout_height="60dp"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="240dp" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="266dp"
+        android:layout_height="60dp"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="315dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName6"
+        android:layout_width="266dp"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:hint="Fecha Inicio"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="399dp" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="51dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/actualizar"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+        tools:layout_editor_absoluteX="171dp" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="52dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/eliminar"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteX="290dp" />
+
+    <Button
+        android:id="@+id/btn_GuardarPH"
+        android:layout_width="44dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/guardar"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+        tools:layout_editor_absoluteX="70dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

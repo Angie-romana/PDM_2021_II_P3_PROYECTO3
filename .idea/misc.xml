@@ -5,8 +5,19 @@
       <map>
         <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/drawable/btn_color.xml" value="0.22864583333333333" />
         <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_abogado.xml" value="0.264" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_audiencia_detalle.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_caso.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_caso_empleado.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_claso_empleado.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_cliente.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_cobro.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_indicio.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_juzgado.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_main.xml" value="0.2125" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_precio_historico.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_principal.xml" value="0.264" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_servicio.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_sucursal.xml" value="0.22916666666666666" />
       </map>
     </option>
   </component>
