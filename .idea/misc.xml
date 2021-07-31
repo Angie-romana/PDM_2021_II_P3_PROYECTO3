@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/drawable/btn_color.xml" value="0.22864583333333333" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_abogado.xml" value="0.264" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_main.xml" value="0.2125" />
+        <entry key="..\:/Users/Mitsuki/AndroidStudioProjects/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_principal.xml" value="0.264" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
