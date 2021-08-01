@@ -4,6 +4,193 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo2"
     tools:context=".CasoActivity">
 
+    <EditText
+        android:id="@+id/txtIdCaso1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="9dp"
+        android:ems="10"
+        android:hint="Id de caso"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtTipoCaso"
+        app:layout_constraintStart_toStartOf="@+id/txtTipoCaso" />
+
+    <EditText
+        android:id="@+id/txtTipoCaso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="191dp"
+        android:ems="10"
+        android:hint="Tipo de caso"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/txtEstadoCaso"
+        app:layout_constraintStart_toStartOf="@+id/txtEstadoCaso"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtSentencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Sentencia del caso"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txtTipoCaso"
+        app:layout_constraintTop_toBottomOf="@+id/txtTipoCaso" />
+
+    <EditText
+        android:id="@+id/txtIdCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:hint="Id del cliente"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txtSentencia"
+        app:layout_constraintTop_toBottomOf="@+id/txtSentencia" />
+
+    <EditText
+        android:id="@+id/txtIdServicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Id del servicio"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txtIdCliente"
+        app:layout_constraintTop_toBottomOf="@+id/txtIdCliente" />
+
+    <EditText
+        android:id="@+id/txtIdFechaAudiencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:hint="Fecha de audiencia"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtIdExpediente"
+        app:layout_constraintEnd_toEndOf="@+id/txtIdServicio" />
+
+    <EditText
+        android:id="@+id/txtIdExpediente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:hint="Id del expediente"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txtIdFechaAudiencia"
+        app:layout_constraintTop_toBottomOf="@+id/txtIdServicio" />
+
+    <EditText
+        android:id="@+id/txtEstadoCaso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="94dp"
+        android:ems="10"
+        android:hint="Estado del caso"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarCaso"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtIdExpediente" />
+
+    <EditText
+        android:id="@+id/txtDictamen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="Dictamen de sentencia"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtIdIndicio"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txtIdIndicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="Id de indicio"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnGuardarCaso"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txvTituloCasos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="156dp"
+        android:text="CASOS"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGuardarCaso"
+        android:layout_width="51dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="281dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/guardar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnActualizarCaso"
+        app:layout_constraintStart_toEndOf="@+id/txtIdIndicio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDictamen"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnActualizarCaso"
+        android:layout_width="48dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/actualizar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnGuardarCaso"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnEliminarCaso"
+        android:layout_width="50dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="594dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/eliminar"
+        app:layout_constraintBottom_toTopOf="@+id/btnActualizarCaso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
