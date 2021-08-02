@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {  val intent = Intent(this,JuzgadoActivity::class.java)
             startActivity(intent) }
+        /////
     }
 
 }
