@@ -74,7 +74,7 @@
 
     <Button
         android:id="@+id/btnBorrar"
-        android:layout_width="48dp"
+        android:layout_width="53dp"
         android:layout_height="57dp"
         android:layout_marginStart="225dp"
         android:layout_marginEnd="22dp"
@@ -88,8 +88,8 @@
 
     <Button
         android:id="@+id/btnAgregar"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_width="53dp"
+        android:layout_height="57dp"
         android:layout_marginTop="92dp"
         android:layout_marginEnd="63dp"
         android:background="@drawable/guardar"
