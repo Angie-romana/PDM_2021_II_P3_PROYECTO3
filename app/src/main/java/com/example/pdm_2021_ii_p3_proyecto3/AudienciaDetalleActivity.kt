@@ -156,8 +156,8 @@ class AudienciaDetalleActivity : AppCompatActivity() {
             override fun onResponse(call: Call<AudienciaDataCollectionItem>,
                                     response: Response<AudienciaDataCollectionItem>) {
                 if (response.isSuccessful) {
-                    val addedPerson = response.body()!!
-                    onResult(addedPerson)
+                    val addedAudiencia = response.body()!!
+                    onResult(addedAudiencia)
                 }
 
                 else if (response.code() == 500){
