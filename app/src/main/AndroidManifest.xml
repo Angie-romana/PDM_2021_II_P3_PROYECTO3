@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pdm_2021_ii_p3_proyecto3">
-
+<uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -29,18 +30,14 @@
             android:exported="true"
             android:label="@string/title_activity_cobro"
             android:theme="@style/Theme.PDM_2021_II_P3_PROYECTO3.NoActionBar" />
-        <activity
-            android:name=".TipoEmpleadoActivity"
-            android:exported="true" />
+
         <activity
             android:name=".JuzgadoActivity"
             android:exported="true" />
         <activity
             android:name=".PrecioHistoricoActivity"
             android:exported="true" />
-        <activity
-            android:name=".PrecioActivity"
-            android:exported="true" />
+
         <activity
             android:name=".CasoActivity"
             android:exported="true" />
