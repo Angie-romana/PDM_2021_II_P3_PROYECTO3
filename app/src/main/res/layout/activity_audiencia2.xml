@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnGetId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="129dp"
+        android:text="GetId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGetAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Get All"
+        app:layout_constraintStart_toStartOf="@+id/btnGetId"
+        app:layout_constraintTop_toBottomOf="@+id/btnGetId" />
+
+    <Button
+        android:id="@+id/btnPostear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="3dp"
+        android:text="Post"
+        app:layout_constraintEnd_toEndOf="@+id/btnGetAll"
+        app:layout_constraintTop_toBottomOf="@+id/btnGetAll" />
+
+    <Button
+        android:id="@+id/btnPut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:text="Put"
+        app:layout_constraintStart_toStartOf="@+id/btnPostear"
+        app:layout_constraintTop_toBottomOf="@+id/btnPostear" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Delete"
+        app:layout_constraintStart_toStartOf="@+id/btnPut"
+        app:layout_constraintTop_toBottomOf="@+id/btnPut" />
+</androidx.constraintlayout.widget.ConstraintLayout>
