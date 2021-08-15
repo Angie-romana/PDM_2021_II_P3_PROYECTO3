@@ -82,7 +82,7 @@ class CaiActivity : AppCompatActivity() {
             override fun onResponse(call: Call<CaiDataCollectionItem>,
                                     response: Response<CaiDataCollectionItem>) {
                 if (response.isSuccessful) {
-                    val updatedPerson = response.body()!!
+                    val updatedCai = response.body()!!
                     Toast.makeText(this@CaiActivity,"OK"+response.body()!!.cai,Toast.LENGTH_LONG).show()
                 }
                 else if (response.code() == 401){
