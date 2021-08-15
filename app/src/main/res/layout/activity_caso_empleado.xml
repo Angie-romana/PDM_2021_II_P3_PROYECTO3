@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/txtFechaFinalT"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="66dp"
@@ -36,7 +36,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaInicioT" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/txtFechaInicioT"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="70dp"
@@ -86,7 +86,7 @@
         android:backgroundTint="@color/purple_700"
         app:layout_constraintEnd_toStartOf="@+id/button7"
         app:layout_constraintStart_toEndOf="@+id/btn_GuardarPH"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaFinalT" />
 
     <Button
         android:id="@+id/button7"
@@ -98,7 +98,7 @@
         android:backgroundTint="@color/purple_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button8"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaFinalT"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
@@ -112,6 +112,6 @@
         android:backgroundTint="@color/purple_700"
         app:layout_constraintEnd_toStartOf="@+id/button8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaFinalT" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

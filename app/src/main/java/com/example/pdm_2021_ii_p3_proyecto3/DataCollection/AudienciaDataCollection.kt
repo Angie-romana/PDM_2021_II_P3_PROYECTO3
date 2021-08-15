@@ -10,3 +10,4 @@ data class AudienciaDataCollectionItem(
     val idjuzgado: EditText,
     val descripcionaudiencia: EditText
 )
+

@@ -79,7 +79,7 @@ class AudienciaDetalleActivity : AppCompatActivity() {
             override fun onResponse(call: Call<AudienciaDataCollectionItem>,
                                     response: Response<AudienciaDataCollectionItem>) {
                 if (response.isSuccessful) {
-                    val updatedPerson = response.body()!!
+                    val updatedAudiencia = response.body()!!
                     Toast.makeText(this@AudienciaDetalleActivity,"OK"+response.body()!!.idcaso,Toast.LENGTH_LONG).show()
                 }
                 else if (response.code() == 401){
