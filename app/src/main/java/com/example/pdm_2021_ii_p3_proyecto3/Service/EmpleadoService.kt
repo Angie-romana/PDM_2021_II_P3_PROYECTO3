@@ -18,5 +18,6 @@ interface EmpleadoService {
     @PUT("empleado")
     fun updateEmpleado(@Body caiData: EmpleadoDataCollectionItem): Call<EmpleadoDataCollectionItem>
     @DELETE("empleado/delete/{id}")
-    fun deleteEmpleado(@Path("id") id: EditText): Call<ResponseBody>
+    fun deleteEmpleado(@Path("id") id: Long): Call<ResponseBody>
 }
+
