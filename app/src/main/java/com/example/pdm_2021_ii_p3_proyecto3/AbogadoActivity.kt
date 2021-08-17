@@ -45,6 +45,7 @@ class AbogadoActivity : AppCompatActivity() {
         arrayAdapter = ArrayAdapter(this@AbogadoActivity,android.R.layout.simple_list_item_1,tipoEmpleado)
         spnTipoEmpleado.adapter = arrayAdapter
     }
+
     private fun callServiceGetEmpleados() {
         val personService:EmpleadoService = RestEngine.buildService().create(EmpleadoService::class.java)
         var result: Call<List<EmpleadoDataCollectionItem>> = personService.listEmpleados()
@@ -67,7 +68,6 @@ class AbogadoActivity : AppCompatActivity() {
                     val arrayAdapter: ArrayAdapter<*>
                     arrayAdapter = ArrayAdapter(this@AbogadoActivity,android.R.layout.simple_list_item_1,array)
                     lvwPrincipal.adapter = arrayAdapter
-                    Toast.makeText(this@AbogadoActivity,"OK"+response.body()!!.get(0).nombreempleado,Toast.LENGTH_LONG).show()
                 }
 
             }
@@ -77,6 +77,9 @@ class AbogadoActivity : AppCompatActivity() {
 
     fun actualizarEmpleado(view: View) {
         if(estaVacio()){
+            return
+        }
+        if(noLoSuficienteLargo()){
             return
         }
         val builder = AlertDialog.Builder(this)
@@ -198,7 +201,7 @@ class AbogadoActivity : AppCompatActivity() {
             telefonoempleado = txtTelefonoEmpleado.text.toString().toLong(),
             direccionempleado = txtDireccionEmpleado.text.toString(),
             salarioempleado = txtSalarioEmpleado.text.toString().toDouble(),
-            tipoempleado = spnTipoEmpleado.selectedItem.toString().substring(0),
+            tipoempleado = spnTipoEmpleado.selectedItem.toString().substring(0,1),
             nombreusuario = txtUsuarioEmpleado.text.toString(),
             claveusuario = claveEncriptada
         )
@@ -240,7 +243,7 @@ class AbogadoActivity : AppCompatActivity() {
             telefonoempleado = txtTelefonoEmpleado.text.toString().toLong(),
             direccionempleado = txtDireccionEmpleado.text.toString(),
             salarioempleado = txtSalarioEmpleado.text.toString().toDouble(),
-            tipoempleado = spnTipoEmpleado.selectedItem.toString().substring(0),
+            tipoempleado = spnTipoEmpleado.selectedItem.toString().substring(0,1),
             nombreusuario = txtUsuarioEmpleado.text.toString(),
             claveusuario = claveEncriptada
         )
@@ -257,6 +260,12 @@ class AbogadoActivity : AppCompatActivity() {
 
 
     fun addEmpleado(empleadoData: EmpleadoDataCollectionItem, onResult: (EmpleadoDataCollectionItem?) -> Unit){
+        if(estaVacio()){
+            return
+        }
+        if(noLoSuficienteLargo()){
+            return
+        }
         val retrofit = RestEngine.buildService().create(EmpleadoService::class.java)
         var result: Call<EmpleadoDataCollectionItem> = retrofit.addEmpleado(empleadoData)
         result.enqueue(object : Callback<EmpleadoDataCollectionItem> {
