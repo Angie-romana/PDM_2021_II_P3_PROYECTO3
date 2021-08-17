@@ -3,6 +3,7 @@ package com.example.pdm_2021_ii_p3_proyecto3
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -17,19 +18,62 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import org.apache.commons.codec.digest.DigestUtils
+import java.util.ArrayList
 
 
 class AbogadoActivity : AppCompatActivity() {
-    var idEmpleado:Long = 0
+    var array = ArrayList<String>()
+    var tipoEmpleado = ArrayList<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_abogado)
+        llenarSpinner()
+        callServiceGetEmpleados()
         btnGuardarEmpleado.setOnClickListener { v-> callServicePostEmpleado() }
         btnActualizarEmpleado.setOnClickListener { v -> actualizarEmpleado(v) }
         btnBorrarEmpleado.setOnClickListener { v-> borrarEmpleado(v) }
 
     }
+
+    private fun llenarSpinner(){
+        val arrayAdapter: ArrayAdapter<*>
+        tipoEmpleado.add("Seleccione el tipo de empleado")
+        tipoEmpleado.add("Empleado Administrativo")
+        tipoEmpleado.add("Abogado")
+        arrayAdapter = ArrayAdapter(this@AbogadoActivity,android.R.layout.simple_list_item_1,tipoEmpleado)
+        spnTipoEmpleado.adapter = arrayAdapter
+    }
+    private fun callServiceGetEmpleados() {
+        val personService:EmpleadoService = RestEngine.buildService().create(EmpleadoService::class.java)
+        var result: Call<List<EmpleadoDataCollectionItem>> = personService.listEmpleados()
+
+        result.enqueue(object :  Callback<List<EmpleadoDataCollectionItem>> {
+            override fun onFailure(call: Call<List<EmpleadoDataCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@AbogadoActivity,"Error",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<List<EmpleadoDataCollectionItem>>,
+                response: Response<List<EmpleadoDataCollectionItem>>
+            ) {
+                array.add("Todos los empleados")
+                array.add("ID|Nombre|Apellido|DNI|Teléfono|Direccion|Salario|Tipo|Nombre de Usuario|Clave de Usuario")
+                for(i in 0..(response.body()!!.size-1)){
+                    array.add(response.body()!!.get(i).idempleado.toString() + "|" + response.body()!!.get(i).nombreempleado + "|" + response.body()!!.get(i).apellidoempleado + "|" + response.body()!!.get(i).dniempleado + "|"
+                    + response.body()!!.get(i).telefonoempleado + "|" + response.body()!!.get(i).direccionempleado + "|" + response.body()!!.get(i).salarioempleado + "|"
+                            + response.body()!!.get(i).tipoempleado + "|" + response.body()!!.get(i).nombreusuario + "|" + response.body()!!.get(i).claveusuario)
+                    val arrayAdapter: ArrayAdapter<*>
+                    arrayAdapter = ArrayAdapter(this@AbogadoActivity,android.R.layout.simple_list_item_1,array)
+                    lvwPrincipal.adapter = arrayAdapter
+                    Toast.makeText(this@AbogadoActivity,"OK"+response.body()!!.get(0).nombreempleado,Toast.LENGTH_LONG).show()
+                }
+
+            }
+        })
+    }
+
 
     fun actualizarEmpleado(view: View) {
         if(estaVacio()){
@@ -96,16 +140,48 @@ class AbogadoActivity : AppCompatActivity() {
             txtSalarioEmpleado.error ="Debe rellenar el salario del empleado"
             return true
         }
-        if(txtTipoEmpleado.text.toString().isEmpty()) {
-            txtTipoEmpleado.error ="Debe rellenar el tipo de empleado"
-            return true
-        }
+
         if(txtUsuarioEmpleado.text.toString().isEmpty()) {
             txtUsuarioEmpleado.error ="Debe rellenar el usuario del empleado"
             return true
         }
         if(txtClaveEmpleado.text.toString().isEmpty()) {
             txtClaveEmpleado.error ="Debe rellenar la contraseña del empleado"
+            return true
+        }
+        return false
+    }
+
+    private fun noLoSuficienteLargo():Boolean{
+        if(txtNombreEmpleado.text.toString().length < 3) {
+            txtNombreEmpleado.error ="El nombre no puede ser menor a 3 caracteres"
+            return true
+        }else if(txtApellidoEmpleado.text.toString().length < 3){
+            txtApellidoEmpleado.error = "El apellido no puede ser menor a 3 caracteres"
+            return true
+        }
+        if(txtDNIEmpleado.text.toString().length != 15) {
+            txtDNIEmpleado.error ="El dni no puede ser distinto a 13 dígitos, no olvide ingresar los guiones"
+            return true
+        }
+        if(txtTelefonoEmpleado.text.toString().length != 8) {
+            txtTelefonoEmpleado.error ="El telefono no puede ser distinto a 8 dígitos"
+            return true
+        }
+        if(txtDireccionEmpleado.text.toString().length < 10) {
+            txtDireccionEmpleado.error ="La dirección del empleado no puede ser menor a 10 caracteres"
+            return true
+        }
+        if(txtSalarioEmpleado.text.toString().length < 4) {
+            txtSalarioEmpleado.error ="El salario no puede ser menor a 4 dígitos"
+            return true
+        }
+        if(txtUsuarioEmpleado.text.toString().length < 8) {
+            txtUsuarioEmpleado.error ="El nombre de usuario no puede ser menor a 8 dígitos"
+            return true
+        }
+        if(txtClaveEmpleado.text.toString().length < 8) {
+            txtClaveEmpleado.error ="La contraseña no puede ser menor a 8 dígitos"
             return true
         }
         return false
@@ -122,7 +198,7 @@ class AbogadoActivity : AppCompatActivity() {
             telefonoempleado = txtTelefonoEmpleado.text.toString().toLong(),
             direccionempleado = txtDireccionEmpleado.text.toString(),
             salarioempleado = txtSalarioEmpleado.text.toString().toDouble(),
-            tipoempleado = txtTipoEmpleado.text.toString(),
+            tipoempleado = spnTipoEmpleado.selectedItem.toString().substring(0),
             nombreusuario = txtUsuarioEmpleado.text.toString(),
             claveusuario = claveEncriptada
         )
@@ -164,7 +240,7 @@ class AbogadoActivity : AppCompatActivity() {
             telefonoempleado = txtTelefonoEmpleado.text.toString().toLong(),
             direccionempleado = txtDireccionEmpleado.text.toString(),
             salarioempleado = txtSalarioEmpleado.text.toString().toDouble(),
-            tipoempleado = txtTipoEmpleado.text.toString(),
+            tipoempleado = spnTipoEmpleado.selectedItem.toString().substring(0),
             nombreusuario = txtUsuarioEmpleado.text.toString(),
             claveusuario = claveEncriptada
         )
@@ -215,10 +291,6 @@ class AbogadoActivity : AppCompatActivity() {
         }
         )
     }
-
-
-
-
 
     private fun callServiceDeleteEmpleado(idEmpleado: Long) {
         val empleadoService:EmpleadoService = RestEngine.buildService().create(EmpleadoService::class.java)
