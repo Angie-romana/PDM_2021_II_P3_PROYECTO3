@@ -1,5 +1,6 @@
 package com.example.pdm_2021_ii_p3_proyecto3
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Parcel
@@ -25,21 +26,7 @@ class MainActivity() : AppCompatActivity() {
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
 
-   /* public override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main2)
-        setSupportActionBar(findViewById(R.id.toolbar))
-
-        collapsing_toollbar.title = "Bufete de Abogados"
-        collapsing_toollbar.setContentScrimColor(Color.DKGRAY)
-        layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
-
-        adapter = RecyclerAdapter()
-        recyclerView.adapter = adapter
-
-    }*/
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
@@ -49,17 +36,15 @@ class MainActivity() : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        button.setOnClickListener {
+            val intent = Intent(this,PrincipalActivity::class.java)
+            startActivity(intent)
+        }
 
       //  setSupportActionBar(binding.toolbar)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.button.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -77,9 +62,7 @@ class MainActivity() : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+        TODO()
     }
 
 }

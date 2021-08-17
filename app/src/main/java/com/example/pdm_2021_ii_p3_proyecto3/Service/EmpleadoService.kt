@@ -8,7 +8,7 @@ import retrofit2.http.*
 
 interface EmpleadoService {
     @GET("empleado")
-    fun listEmpleado(): Call<List<EmpleadoDataCollectionItem>>
+    fun listEmpleados(): Call<List<EmpleadoDataCollectionItem>>
     @GET("empleado/id/{id}")
     fun getEmpleadoById(@Path("id") id: EditText): Call<EmpleadoDataCollectionItem>
     @Headers("Content-Type: application/json")
