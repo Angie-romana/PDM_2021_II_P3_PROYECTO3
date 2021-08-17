@@ -143,6 +143,10 @@ class AbogadoActivity : AppCompatActivity() {
             txtSalarioEmpleado.error ="Debe rellenar el salario del empleado"
             return true
         }
+        if(spnTipoEmpleado.selectedItem.toString().equals("Seleccione el tipo de empleado")){
+            Toast.makeText(this@AbogadoActivity,"Debe seleccionar un tipo de empleado",Toast.LENGTH_LONG).show()
+            return true
+        }
 
         if(txtUsuarioEmpleado.text.toString().isEmpty()) {
             txtUsuarioEmpleado.error ="Debe rellenar el usuario del empleado"
@@ -208,12 +212,10 @@ class AbogadoActivity : AppCompatActivity() {
 
         val retrofit = RestEngine.buildService().create(EmpleadoService::class.java)
         var result: Call<EmpleadoDataCollectionItem> = retrofit.updateEmpleado(empleadoInfo)
-
         result.enqueue(object : Callback<EmpleadoDataCollectionItem> {
             override fun onFailure(call: Call<EmpleadoDataCollectionItem>, t: Throwable) {
                 Toast.makeText(this@AbogadoActivity,"Error",Toast.LENGTH_LONG).show()
             }
-
             override fun onResponse(call: Call<EmpleadoDataCollectionItem>,
                                     response: Response<EmpleadoDataCollectionItem>) {
                 if (response.isSuccessful) {
@@ -227,7 +229,6 @@ class AbogadoActivity : AppCompatActivity() {
                     Toast.makeText(this@AbogadoActivity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
                 }
             }
-
         })
     }
 
