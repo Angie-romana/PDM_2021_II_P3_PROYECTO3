@@ -13,89 +13,94 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="62dp"
-        android:layout_marginBottom="190dp"
+        android:layout_marginBottom="139dp"
         android:text="Servicio"
         android:textColor="@color/white"
         android:textSize="40dp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@+id/txtFechaInicioT"
+        app:layout_constraintBottom_toTopOf="@+id/txtNombreServicio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtFechaInicioT"
-        android:layout_width="269dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="305dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="184dp"
+        android:id="@+id/txtNombreServicio"
+        android:layout_width="275dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginEnd="71dp"
         android:ems="10"
-        android:hint="Nombre del Servicio"
+        android:hint="@string/nombre_del_servicio"
         android:inputType="textPersonName"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btn_GuardarPH"
+        app:layout_constraintBottom_toTopOf="@+id/txtDescripcionServicio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txv" />
+
+    <Button
+        android:id="@+id/btnGuardarServicio"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="57dp"
+        android:background="@drawable/guardar"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toStartOf="@+id/btnActualizarServicio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionServicio"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnActualizarServicio"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="68dp"
+        android:background="@drawable/actualizar"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarServicio"
+        app:layout_constraintStart_toEndOf="@+id/btnGuardarServicio"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionServicio"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnEliminarServicio"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/eliminar"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnActualizarServicio"
+        app:layout_constraintTop_toTopOf="@+id/btnActualizarServicio"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/txt_FechaInicial"
+        android:id="@+id/txtDescripcionServicio"
         android:layout_width="269dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="114dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="63dp"
         android:ems="10"
         android:hint="Descripcion del Servicio"
         android:inputType="textPersonName"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/button8"
+        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFechaInicioT" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreServicio" />
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginBottom="1dp"
-        android:background="@drawable/eliminar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="@+id/button8"
+    <ListView
+        android:layout_width="351dp"
+        android:layout_height="237dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button8"
-        app:layout_constraintTop_toTopOf="@+id/button8"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/btn_GuardarPH"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="66dp"
-        android:layout_marginEnd="57dp"
-        android:layout_marginBottom="127dp"
-        android:background="@drawable/guardar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFechaInicioT" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="127dp"
-        android:background="@drawable/actualizar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button7"
-        app:layout_constraintStart_toEndOf="@+id/btn_GuardarPH"
-        app:layout_constraintTop_toBottomOf="@+id/txt_FechaInicial" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionServicio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
