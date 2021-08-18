@@ -28,7 +28,7 @@ class ClienteActivity : AppCompatActivity() {
         callServiceGetClientes()
         btnGuardarCliente.setOnClickListener { v-> callServicePostCliente() }
         btnActualizarCliente.setOnClickListener { v -> actualizarCliente(v) }
-        btnBorrarCliente.setOnClickListener { v-> borrarEmpleado(v) }
+        btnBorrarCliente.setOnClickListener { v-> borrarCliente(v) }
     }
     private fun callServiceGetClientes() {
         val clienteService: ClienteService = RestEngine.buildService().create(ClienteService::class.java)
@@ -221,7 +221,6 @@ class ClienteActivity : AppCompatActivity() {
         result.enqueue(object : Callback<ClienteDataCollectionItem> {
             override fun onFailure(call: Call<ClienteDataCollectionItem>, t: Throwable) {
 
-                Toast.makeText(this@ClienteActivity,"Error",Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<ClienteDataCollectionItem>,
@@ -242,7 +241,7 @@ class ClienteActivity : AppCompatActivity() {
         })
     }
 
-    fun borrarEmpleado(view:View){
+    fun borrarCliente(view:View){
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
         builder.setTitle("Ingrese el Id del cliente")
@@ -285,5 +284,7 @@ class ClienteActivity : AppCompatActivity() {
             }
         })
     }
+
+
 
 }

@@ -4,10 +4,10 @@ import android.widget.EditText
 
 class CasoDataCollection : ArrayList<CasoDataCollectionItem>()
 data class CasoDataCollectionItem(
-    val idcaso: EditText,
-    val tipocaso: EditText,
-    val sentenciacaso: EditText,
-    val idcliente: EditText,
-    val idservicio: EditText,
-    val estadocaso: EditText
+    val idcaso: Long,
+    val tipocaso: String,
+    val sentenciacaso: String,
+    val idcliente: Long,
+    val idservicio: Long,
+    val estadocaso: String
 )

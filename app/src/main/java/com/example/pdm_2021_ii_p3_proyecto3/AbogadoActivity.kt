@@ -308,7 +308,7 @@ class AbogadoActivity : AppCompatActivity() {
 
         result.enqueue(object :  Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@AbogadoActivity,"Error",Toast.LENGTH_LONG).show()
+
             }
 
             override fun onResponse(

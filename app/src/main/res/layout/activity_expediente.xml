@@ -7,90 +7,134 @@
     android:background="@drawable/fondo3"
     tools:context=".ExpedienteActivity">
 
-    <TextView
-        android:id="@+id/txvTituloExpediente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Expedientes"
-        android:textColor="@color/white"
-        android:textSize="45dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.391"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtIdExp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="245dp"
-        android:ems="10"
-        android:hint="Id de expediente"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtEntidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:ems="10"
-        android:hint="Entidad"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/txtIdExp"
-        app:layout_constraintTop_toBottomOf="@+id/txtIdExp" />
-
-    <EditText
-        android:id="@+id/txtNumExp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Numero de expediente"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/txtEntidad"
-        app:layout_constraintTop_toBottomOf="@+id/txtEntidad" />
-
-    <Button
-        android:id="@+id/btnGuardarExp"
-        android:layout_width="63dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/guardar"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnActualizarExp"
-        app:layout_constraintEnd_toStartOf="@+id/btnActualizarExp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/btnActualizarExp"
-        android:layout_width="64dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="6dp"
-        android:background="@drawable/actualizar"
-        app:layout_constraintEnd_toStartOf="@+id/btnEliminarExp"
-        app:layout_constraintStart_toEndOf="@+id/btnGuardarExp"
-        app:layout_constraintTop_toTopOf="@+id/btnEliminarExp"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/btnEliminarExp"
-        android:layout_width="76dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="158dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="158dp"
-        android:background="@drawable/eliminar"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnActualizarExp"
-        app:layout_constraintTop_toBottomOf="@+id/txtEntidad"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnActualizarExp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="52dp"
+                android:background="@drawable/actualizar"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btnBorrarExp"
+                app:layout_constraintEnd_toStartOf="@+id/btnBorrarExp"
+                app:layout_constraintStart_toEndOf="@+id/btnGuardarExp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/txtEntidadExpediente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="26dp"
+                android:ems="10"
+                android:hint="Entidad"
+                android:digits="abcdefghijklmnñopqrstuvxwyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚáéíóúäëïöüÄËÏÖÜ"
+                android:maxLength="50"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toTopOf="@+id/txtNumExpediente"
+                app:layout_constraintStart_toStartOf="@+id/spnIdCasoExpediente"
+                app:layout_constraintTop_toBottomOf="@+id/spnIdCasoExpediente" />
+
+            <Button
+                android:id="@+id/btnGuardarExp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="65dp"
+                android:layout_marginEnd="58dp"
+                android:layout_marginBottom="53dp"
+                android:background="@drawable/guardar"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btnBorrarExp"
+                app:layout_constraintBottom_toTopOf="@+id/lvwPrincipalExpediente"
+                app:layout_constraintEnd_toStartOf="@+id/btnActualizarExp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnBorrarExp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnBorrarExp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="73dp"
+                android:background="@drawable/eliminar"
+                app:layout_constraintBottom_toTopOf="@+id/btnGuardarExp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnActualizarExp"
+                app:layout_constraintTop_toBottomOf="@+id/txtNumExpediente"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/spnIdCasoExpediente"
+                android:layout_width="209dp"
+                android:layout_height="54dp"
+                android:layout_marginBottom="36dp"
+                android:ems="10"
+                android:hint="Id de expediente"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toTopOf="@+id/txtEntidadExpediente"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvTituloExpediente" />
+
+            <EditText
+                android:id="@+id/txtNumExpediente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:ems="10"
+                android:hint="Número de expediente"
+                android:maxLength="30"
+                android:inputType="phone"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnBorrarExp"
+                app:layout_constraintStart_toStartOf="@+id/txtEntidadExpediente"
+                app:layout_constraintTop_toBottomOf="@+id/txtEntidadExpediente" />
+
+            <TextView
+                android:id="@+id/txvTituloExpediente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="58dp"
+                android:layout_marginTop="59dp"
+                android:layout_marginBottom="93dp"
+                android:text="Expedientes"
+                android:textColor="@color/white"
+                android:textSize="45dp"
+                app:layout_constraintBottom_toTopOf="@+id/spnIdCasoExpediente"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ListView
+                android:id="@+id/lvwPrincipalExpediente"
+                android:layout_width="0dp"
+                android:layout_height="350dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnGuardarExp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
