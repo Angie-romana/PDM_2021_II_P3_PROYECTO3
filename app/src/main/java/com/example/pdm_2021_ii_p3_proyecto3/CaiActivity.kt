@@ -64,10 +64,10 @@ class CaiActivity : AppCompatActivity() {
     private fun callServicePutCai() {
         val fecha = "2021-04-11"
         val caiInfo = CaiDataCollectionItem(
-            cai = txtCAI,
-            rangoinicial = txtRangoIni,
-            rangofinal = txtRangoFinal,
-            fechalimite = txtFechaLimite
+            cai = txtCAI.text.toString().toLong(),
+            rangoinicial = txtRangoIni.text.toString().toLong(),
+            rangofinal = txtRangoFinal.text.toString().toLong(),
+            fechalimite = txtFechaLimite.text.toString().toDate()
 
         )
 
@@ -116,10 +116,10 @@ class CaiActivity : AppCompatActivity() {
     private fun callServicePostCai() {
         val fecha = "2021-04-10"
         val caiInfo = CaiDataCollectionItem(
-            cai = txtCAI,
-            rangoinicial = txtRangoIni,
-            rangofinal = txtRangoFinal,
-            fechalimite = txtFechaLimite
+            cai = txtCAI.text.toString().toLong(),
+            rangoinicial = txtRangoIni.text.toString().toLong(),
+            rangofinal = txtRangoFinal.text.toString().toLong(),
+            fechalimite = txtFechaLimite.text.toString().toDate()
 
         )
         addCai(caiInfo) {
@@ -178,6 +178,6 @@ class CaiActivity : AppCompatActivity() {
         )
     }
 
-    fun String.toDate(format: String, locale: Locale = Locale.getDefault()): Date = SimpleDateFormat(format, locale).parse(this)
+    fun String.toDate(locale: Locale = Locale.getDefault()): Date = SimpleDateFormat(format(), locale).parse(this)
 
 }

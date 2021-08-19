@@ -61,10 +61,10 @@ class AudienciaDetalleActivity : AppCompatActivity() {
     private fun callServicePutAudiencia() {
         val fecha = "2021-04-11"
         val audienciaInfo = AudienciaDataCollectionItem(
-            idcaso = txtIdCaso,
-            fechaaudiencia = txtFechaAudiencia,
-            idjuzgado = txtIdJuzgado,
-            descripcionaudiencia = txtDescripAudie
+            idcaso = 0,
+            fechaaudiencia = txtFechaAudiencia.text.toString().toDate(),
+            idjuzgado = 0,
+            descripcionaudiencia = txtDescripAudie.text.toString()
 
         )
 
@@ -112,11 +112,10 @@ class AudienciaDetalleActivity : AppCompatActivity() {
     private fun callServicePostAudiencia() {
         val fecha = "2021-04-10"
         val audienciaInfo = AudienciaDataCollectionItem(
-            idcaso = txtIdCaso,
-           fechaaudiencia = txtFechaAudiencia,
-            idjuzgado = txtIdJuzgado,
-            descripcionaudiencia = txtDescripAudie
-
+            idcaso = 0,
+            fechaaudiencia = txtFechaAudiencia.text.toString().toDate(),
+            idjuzgado = 0,
+            descripcionaudiencia = txtDescripAudie.text.toString()
         )
         addAudiencia(audienciaInfo) {
             if (it?.idcaso!= null) {
@@ -175,6 +174,6 @@ class AudienciaDetalleActivity : AppCompatActivity() {
         )
     }
 
-    fun String.toDate(format: String, locale: Locale = Locale.getDefault()): Date = SimpleDateFormat(format, locale).parse(this)
+    fun String.toDate(locale: Locale = Locale.getDefault()): Date = SimpleDateFormat(format(), locale).parse(this)
 }
 
