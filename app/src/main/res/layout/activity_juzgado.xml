@@ -15,88 +15,91 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="51dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginBottom="102dp"
         android:text="Juzgado"
         android:textColor="@color/white"
         android:textSize="40dp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@+id/txtDescripcionServicio"
+        app:layout_constraintBottom_toTopOf="@+id/txtNombreJuzgado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
-        android:id="@+id/txtDescripcionServicio"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
+        android:id="@+id/txtNombreJuzgado"
+        android:layout_width="288dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="17dp"
         android:ems="10"
         android:hint="Nombre del Juzgado"
         android:inputType="textPersonName"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/txt_Fechainicial"
-        app:layout_constraintEnd_toEndOf="@+id/txt_Fechainicial"
-        app:layout_constraintStart_toStartOf="@+id/txt_Fechainicial"
+        app:layout_constraintBottom_toTopOf="@+id/txtDireccionJuzgado"
+        app:layout_constraintEnd_toEndOf="@+id/txtDireccionJuzgado"
+        app:layout_constraintStart_toStartOf="@+id/txtDireccionJuzgado"
         app:layout_constraintTop_toBottomOf="@+id/txv" />
 
     <EditText
-        android:id="@+id/txt_Fechainicial"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="329dp"
+        android:id="@+id/txtDireccionJuzgado"
+        android:layout_width="293dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="62dp"
         android:ems="10"
         android:hint="Dirección"
         android:inputType="textPersonName"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnEliminarServicio"
-        app:layout_constraintStart_toStartOf="@+id/btnGuardarServicio"
-        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionServicio" />
+        app:layout_constraintBottom_toTopOf="@+id/lvwJuzgado"
+        app:layout_constraintStart_toStartOf="@+id/btnGuardarJuzgado"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreJuzgado" />
 
     <Button
-        android:id="@+id/btnEliminarServicio"
+        android:id="@+id/btnEliminarJuzgado"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="49dp"
         android:background="@drawable/eliminar"
         android:backgroundTint="@color/purple_700"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnActualizarServicio"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Fechainicial" />
+        app:layout_constraintStart_toEndOf="@+id/btnActualizarJuzgado"
+        app:layout_constraintTop_toBottomOf="@+id/txtDireccionJuzgado" />
 
     <Button
-        android:id="@+id/btnActualizarServicio"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="67dp"
-        android:background="@drawable/actualizar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintEnd_toStartOf="@+id/btnEliminarServicio"
-        app:layout_constraintStart_toEndOf="@+id/btnGuardarServicio"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Fechainicial" />
-
-    <Button
-        android:id="@+id/btnGuardarServicio"
+        android:id="@+id/btnGuardarJuzgado"
         android:layout_width="0dp"
         android:layout_height="53dp"
         android:layout_marginStart="73dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="57dp"
         android:background="@drawable/guardar"
         android:backgroundTint="@color/purple_700"
-        app:layout_constraintEnd_toStartOf="@+id/btnActualizarServicio"
+        app:layout_constraintEnd_toStartOf="@+id/btnActualizarJuzgado"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Fechainicial" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDireccionJuzgado" />
+
+    <Button
+        android:id="@+id/btnActualizarJuzgado"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="67dp"
+        android:background="@drawable/actualizar"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarJuzgado"
+        app:layout_constraintStart_toEndOf="@+id/btnGuardarJuzgado"
+        app:layout_constraintTop_toBottomOf="@+id/txtDireccionJuzgado" />
 
     <ListView
-        android:layout_width="0dp"
-        android:layout_height="224dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="33dp"
+        android:id="@+id/lvwJuzgado"
+        android:layout_width="339dp"
+        android:layout_height="245dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnActualizarServicio" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDireccionJuzgado" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

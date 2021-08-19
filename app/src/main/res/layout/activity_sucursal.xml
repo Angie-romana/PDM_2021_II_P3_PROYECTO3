@@ -16,119 +16,145 @@
         android:layout_marginBottom="171dp"
         android:text="Sucursal"
         android:textColor="@color/white"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@+id/txtNombreSucursal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtcorreo"
+    <ScrollView
+        android:id="@+id/scrollView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginBottom="67dp"
-        android:ems="10"
-        android:hint="e-mail"
-        android:hintTextColor="#FF9E80"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btnActualizarSucursal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTelefonoSucursal" />
-
-    <EditText
-        android:id="@+id/txtNombreSucursal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginTop="273dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginBottom="260dp"
-        android:ems="10"
-        android:hint="Nombre de Sucursal"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btnGuardarSucursal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txtDireccionSucursal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginBottom="10dp"
-        android:ems="10"
-        android:hint="Direccion"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/txtTelefonoSucursal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombreSucursal" />
-
-    <EditText
-        android:id="@+id/txtTelefonoSucursal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginBottom="7dp"
-        android:ems="10"
-        android:hint="Teléfono"
-        android:inputType="number"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/txtcorreo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDireccionSucursal" />
-
-    <Button
-        android:id="@+id/btnEliminarSucursal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="69dp"
-        android:layout_marginBottom="1dp"
-        android:background="@drawable/eliminar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="@+id/btnActualizarSucursal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnActualizarSucursal"
-        app:layout_constraintTop_toTopOf="@+id/btnActualizarSucursal"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/btnActualizarSucursal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="91dp"
-        android:background="@drawable/actualizar"
-        android:backgroundTint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnEliminarSucursal"
-        app:layout_constraintStart_toEndOf="@+id/btnGuardarSucursal"
-        app:layout_constraintTop_toBottomOf="@+id/txtcorreo" />
-
-    <Button
-        android:id="@+id/btnGuardarSucursal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="57dp"
-        android:layout_marginBottom="93dp"
-        android:background="@drawable/guardar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnActualizarSucursal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombreSucursal" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/txtDireccionSucursal"
+                android:layout_width="248dp"
+                android:layout_height="52dp"
+                android:layout_marginBottom="21dp"
+                android:ems="10"
+                android:hint="Direccion"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/txtTelefonoSucursal"
+                app:layout_constraintStart_toStartOf="@+id/txtNombreSucursal"
+                app:layout_constraintTop_toBottomOf="@+id/txtNombreSucursal"
+                tools:ignore="TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/txtNombreSucursal"
+                android:layout_width="251dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="86dp"
+                android:layout_marginTop="256dp"
+                android:layout_marginEnd="86dp"
+                android:layout_marginBottom="26dp"
+                android:ems="10"
+                android:hint="Nombre de Sucursal"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/txtDireccionSucursal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/lstSucursal"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/txtcorreo"
+                android:layout_width="247dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="26dp"
+                android:ems="10"
+
+                android:hint="e-mail"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/btnEliminarSucursal"
+                app:layout_constraintStart_toStartOf="@+id/txtTelefonoSucursal"
+                app:layout_constraintTop_toBottomOf="@+id/txtTelefonoSucursal"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/txtTelefonoSucursal"
+                android:layout_width="247dp"
+                android:layout_height="54dp"
+                android:layout_marginBottom="26dp"
+                android:ems="10"
+
+                android:hint="Teléfono"
+                android:inputType="number"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/txtcorreo"
+                app:layout_constraintStart_toStartOf="@+id/txtDireccionSucursal"
+                app:layout_constraintTop_toBottomOf="@+id/txtDireccionSucursal"
+                tools:ignore="TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck" />
+
+            <Button
+                android:id="@+id/btnEliminarSucursal"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="31dp"
+                android:background="@drawable/eliminar"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btnActualizarSucursal"
+                app:layout_constraintBottom_toTopOf="@+id/btnActualizarSucursal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnActualizarSucursal"
+                app:layout_constraintTop_toBottomOf="@+id/txtcorreo"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnActualizarSucursal"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="85dp"
+                android:layout_marginBottom="36dp"
+                android:background="@drawable/actualizar"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBottom_toTopOf="@+id/lstSucursal"
+                app:layout_constraintEnd_toStartOf="@+id/btnEliminarSucursal"
+                app:layout_constraintStart_toEndOf="@+id/btnGuardarSucursal"
+                app:layout_constraintTop_toBottomOf="@+id/btnEliminarSucursal"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnGuardarSucursal"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="77dp"
+                android:layout_marginEnd="73dp"
+                android:background="@drawable/guardar"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btnActualizarSucursal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnActualizarSucursal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.862"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ListView
+                android:id="@+id/lstSucursal"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnActualizarSucursal" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
