@@ -4,98 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo4"
+    android:background="@drawable/fondo8"
     tools:context=".CobroActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txvMensaje"
+                android:layout_width="176dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="9dp"
+                android:text="Seleccione un servicio"
+                android:textSize="17dp"
+                app:layout_constraintBottom_toTopOf="@+id/lstServicios"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spiCliente" />
+
+            <Spinner
+                android:id="@+id/spiCliente"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="163dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/txvMensaje"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <ListView
+                android:id="@+id/lstServicios"
+                android:layout_width="0dp"
+                android:layout_height="450dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="256dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginBottom="23dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnAgregar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnBorrar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="126dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/eliminar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnAgregar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lstServicios"
+                app:layout_constraintVertical_bias="1.0"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnAgregar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="127dp"
+                android:background="@drawable/guardar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnBorrar"
+                app:layout_constraintTop_toBottomOf="@+id/lstServicios"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/txvTituloCobro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
-        android:layout_marginBottom="69dp"
         android:text="Cobros"
         android:textColor="@color/white"
         android:textSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/spiCliente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txvMensaje"
-        android:layout_width="176dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="120dp"
-        android:textSize="17dp"
-        android:text="Seleccione un servicio"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spiCliente"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="528dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvTituloCobro"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-    <ListView
-        android:id="@+id/lstServicios"
-        android:layout_width="364dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="213dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="84dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnBorrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txtCantidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="159dp"
-        android:ems="10"
-        android:hint="Cantidad"
-        android:inputType="number"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lstServicios" />
-
-    <Button
-        android:id="@+id/btnBorrar"
-        android:layout_width="53dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="225dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="64dp"
-        android:background="@drawable/eliminar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAgregar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lstServicios"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/btnAgregar"
-        android:layout_width="53dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="63dp"
-        android:background="@drawable/guardar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnBorrar"
-        app:layout_constraintTop_toBottomOf="@+id/lstServicios"
-        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
