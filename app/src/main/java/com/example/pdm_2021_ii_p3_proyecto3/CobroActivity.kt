@@ -5,16 +5,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.*
 import com.example.pdm_2021_ii_p3_proyecto3.Service.*
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_abogado.*
 import kotlinx.android.synthetic.main.activity_cobro.*
 import kotlinx.android.synthetic.main.activity_expediente.*
-import org.apache.commons.codec.digest.DigestUtils
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +22,7 @@ import java.util.*
 class CobroActivity : AppCompatActivity() {
     var array = ArrayList<String>()
     var idCliente = ArrayList<String>()
+    var idDetalle = ArrayList<String>()
     var idCaso = ArrayList<String>()
     var arrayCai = ArrayList<String>()
     var idFactura:Long = 0
@@ -34,6 +33,7 @@ class CobroActivity : AppCompatActivity() {
     var fechaHoy:String = ""
     var caiFinal:Long = 0
     var numFactura = 1
+    var contador = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,8 +110,8 @@ class CobroActivity : AppCompatActivity() {
                 callServicePostFacturaDetalle(idServicio.toLong())
                 callServicePutFacturaEncabezado(idServicio.toLong(),totalFactura)
             }
-
         }
+
     }
 
     private fun callServicePutFacturaEncabezado(idEmpleado:Long, totalFactura:Double) {
@@ -330,6 +330,89 @@ class CobroActivity : AppCompatActivity() {
         return fechaActual
     }
 
+    /*fun capturarIdDetalle(){
+        val facturaDetalleService:FacturaDetalleService = RestEngine.buildService().create(FacturaDetalleService::class.java)
+        var result: Call<List<FacturaDetalleCollectionItem>> = facturaDetalleService.listFacturasDetalle()
+
+        result.enqueue(object :  Callback<List<FacturaDetalleCollectionItem>> {
+            override fun onFailure(call: Call<List<FacturaDetalleCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@CobroActivity,t.message,Toast.LENGTH_LONG).show()
+            }
+            override fun onResponse(
+                call: Call<List<FacturaDetalleCollectionItem>>,
+                response: Response<List<FacturaDetalleCollectionItem>>
+            ) {
+                Toast.makeText(this@CobroActivity,"Sirve",Toast.LENGTH_LONG).show()
+                for(i in 0..(response.body()!!.size-1)){
+                    idDetalle.add(response.body()!!.get(i).idfactura.toString() + "|" + response.body()!!.get(i).iddetalle.toString())
+                    Toast.makeText(this@CobroActivity,idDetalle.size.toString(),Toast.LENGTH_LONG).show()
+                }
+            }
+        })
+    }*/
+
+    private fun eliminarFactura(){
+        if(contador==1){
+            return
+        }
+        callServiceDeleteFacturaDetalle(idFactura)
+        callServiceDeleteFacturaEncabezado(idFactura)
+        Toast.makeText(this@CobroActivity,"Cobro cancelado exitosamente",Toast.LENGTH_LONG).show()
+        restablecerPantalla()
+    }
+
+    private fun callServiceDeleteFacturaDetalle(idFactura: Long) {
+        val facturaDetalle:FacturaDetalleService = RestEngine.buildService().create(FacturaDetalleService::class.java)
+        var result: Call<ResponseBody> = facturaDetalle.deleteFacturaDetalle(idFactura)
+
+        result.enqueue(object :  Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+
+            }
+
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@CobroActivity,"DELETE",Toast.LENGTH_LONG).show()
+                }
+                else if (response.code() == 401){
+                    Toast.makeText(this@CobroActivity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this@CobroActivity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                }
+            }
+        })
+    }
+
+    private fun callServiceDeleteFacturaEncabezado(idFactura: Long) {
+        val facturaEncabezado:FacturaEncabezadoService = RestEngine.buildService().create(FacturaEncabezadoService::class.java)
+        var result: Call<ResponseBody> = facturaEncabezado.deleteFacturasEncabezado(idFactura)
+
+        result.enqueue(object :  Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+
+            }
+
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@CobroActivity,"DELETE",Toast.LENGTH_LONG).show()
+                }
+                else if (response.code() == 401){
+                    Toast.makeText(this@CobroActivity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this@CobroActivity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                }
+            }
+        })
+    }
+
     private fun restablecerPantalla(){
         btnIniciarFactura.isEnabled = false
         btnCerrarFactura.isEnabled = false
@@ -385,12 +468,15 @@ class CobroActivity : AppCompatActivity() {
     }
 
     private fun iniciar(){
+        btnIniciarFactura.isEnabled = false
         btnBorrar.isEnabled = true
         btnCerrarFactura.isEnabled = true
         lstServicios.isEnabled = true
         llenarListView()
         callServicePostFacturaEncabezado()
         capturarIdFactura()
+        btnBorrar.setOnClickListener { eliminarFactura() }
+        contador++
     }
 
     private fun llenarSpinnersPorDefecto(){
