@@ -130,7 +130,7 @@ class SucursalActivity : AppCompatActivity() {
             idsucursal = 0, // Este se llena solo para no dejar vacio. Es incremental
             nombresucursal = txtNombreSucursal.text.toString(),
             dirreccionsucursal = txtDireccionSucursal.text.toString(),
-            telefonosucursal = txtDireccionSucursal.text.toString().toLong(),
+            telefonosucursal = txtTelefonoSucursal.text.toString().toLong(),
             emailsucursal = txtcorreo.text.toString()
         )
         addSucursal(sucursalInfo) {
@@ -179,11 +179,11 @@ class SucursalActivity : AppCompatActivity() {
                         Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
 
-                    Toast.makeText(
+                   /* Toast.makeText(
                         this@SucursalActivity,
                         errorResponse.errorDetails,
                         Toast.LENGTH_LONG
-                    ).show()
+                    ).show()*/
                 } else {
                     Toast.makeText(
                         this@SucursalActivity,

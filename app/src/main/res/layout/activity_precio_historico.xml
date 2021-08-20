@@ -13,111 +13,114 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="66dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="157dp"
+        android:layout_marginBottom="118dp"
         android:text="Precio Histórico"
         android:textColor="@color/white"
         android:textSize="40dp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/txtDescripcionServicio"
+        app:layout_constraintBottom_toTopOf="@+id/txtFechaInicial"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtDescripcionServicio"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/txtFechaInicial"
+        android:layout_width="263dp"
+        android:layout_height="51dp"
         android:layout_marginStart="73dp"
         android:layout_marginEnd="73dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="197dp"
         android:ems="10"
         android:hint="Fecha Inicial"
         android:inputType="textPersonName"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/txt_Fechainicial"
+        app:layout_constraintBottom_toTopOf="@+id/lvwPrecio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txv" />
 
     <EditText
-        android:id="@+id/txt_Precio"
+        android:id="@+id/txtFechaFinal"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_marginStart="73dp"
         android:layout_marginEnd="73dp"
-        android:layout_marginBottom="12dp"
-        android:ems="10"
-        android:hint="Precio"
-        android:inputType="numberDecimal"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/spnIdCaso"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Fechainicial" />
-
-    <EditText
-        android:id="@+id/txt_Fechainicial"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginBottom="14dp"
         android:ems="10"
         android:hint="Fecha Final"
         android:inputType="textPersonName"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/txt_Precio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionServicio" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaInicial" />
+
+    <Spinner
+        android:id="@+id/spnPrecioServicio"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginEnd="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrecio" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnGuardarPrecio"
         android:layout_width="0dp"
         android:layout_height="53dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginEnd="58dp"
+        android:background="@drawable/guardar"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toStartOf="@+id/btnActualizarPrecio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spnPrecioServicio" />
+
+    <Button
+        android:id="@+id/btnActualizarPrecio"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
         android:layout_marginEnd="62dp"
         android:background="@drawable/actualizar"
         android:backgroundTint="@color/purple_700"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintStart_toEndOf="@+id/btnGuardarServicio"
-        app:layout_constraintTop_toBottomOf="@+id/spnIdCaso" />
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarPrecio"
+        app:layout_constraintStart_toEndOf="@+id/btnGuardarPrecio"
+        app:layout_constraintTop_toBottomOf="@+id/spnPrecioServicio" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnEliminarPrecio"
         android:layout_width="0dp"
         android:layout_height="53dp"
-        android:layout_marginTop="88dp"
         android:layout_marginEnd="73dp"
         android:background="@drawable/eliminar"
         android:backgroundTint="@color/purple_700"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/spnIdCaso" />
+        app:layout_constraintStart_toEndOf="@+id/btnActualizarPrecio"
+        app:layout_constraintTop_toBottomOf="@+id/spnPrecioServicio" />
 
-    <Button
-        android:id="@+id/btnGuardarServicio"
+    <EditText
+        android:id="@+id/txtPrecio"
         android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="77dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="58dp"
-        android:background="@drawable/guardar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        android:layout_height="48dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginEnd="73dp"
+        android:ems="10"
+        android:hint="Precio"
+        android:inputType="numberDecimal"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnIdCaso" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaFinal" />
 
-    <Spinner
-        android:id="@+id/spnIdCaso"
+    <ListView
+        android:id="@+id/lvwPrecio"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="69dp"
-        android:layout_marginEnd="69dp"
-        android:layout_marginBottom="218dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Precio" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaInicial" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
