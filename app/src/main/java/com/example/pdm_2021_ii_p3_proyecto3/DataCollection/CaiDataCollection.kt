@@ -6,9 +6,10 @@ import kotlin.collections.ArrayList
 
 class CaiDataCollection : ArrayList<CaiDataCollectionItem>()
 data class CaiDataCollectionItem(
-    val cai: Long,
-    val rangoinicial: Long,
-    val rangofinal: Long,
-    val fechalimite: Date
+    val idcai :Long,
+    val cai: String,
+    val rangoinicial: String,
+    val rangofinal: String,
+    val fechalimite: String
 )
 

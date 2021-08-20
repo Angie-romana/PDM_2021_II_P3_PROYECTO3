@@ -7,10 +7,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_principal.*
 
 class PrincipalActivity : AppCompatActivity() {
+    var idEmpleado:Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal)
-
+        var intent = intent
+        idEmpleado = intent.getSerializableExtra("idEmpleado") as Long
         btnAbogado.setOnClickListener {  val intent = Intent(this,AbogadoActivity::class.java)
             startActivity(intent) }
         btnCliente.setOnClickListener {  val intent = Intent(this,ClienteActivity::class.java)
@@ -23,8 +26,11 @@ class PrincipalActivity : AppCompatActivity() {
             startActivity(intent) }
         btnIndicio.setOnClickListener {  val intent = Intent(this,indicioActivity::class.java)
             startActivity(intent) }
-        btnCobro.setOnClickListener {  val intent = Intent(this,CobroActivity::class.java)
-            startActivity(intent) }
+        btnCobro.setOnClickListener {
+            val intent = Intent(this,CobroActivity::class.java)
+            intent.putExtra("idEmpleado",idEmpleado)
+            startActivity(intent)
+        }
         btnJzgado.setOnClickListener {  val intent = Intent(this,JuzgadoActivity::class.java)
             startActivity(intent) }
         btnPrecioHistorico.setOnClickListener {  val intent = Intent(this,PrecioHistoricoActivity::class.java)
