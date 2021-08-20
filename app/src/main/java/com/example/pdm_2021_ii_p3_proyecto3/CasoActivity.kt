@@ -53,12 +53,12 @@ class CasoActivity : AppCompatActivity() {
     private fun callServicePutCaso() {
         val fecha = "2021-04-11"
         val casoInfo = CasoDataCollectionItem(
-            idcaso = txtIdCaso,
-            tipocaso = txtTipoCaso,
-            sentenciacaso = txtSentencia,
-            idcliente = txtIdCliente,
-            idservicio = txtIdServicio,
-            estadocaso = txtEstadoCaso
+            idcaso = 0,
+            tipocaso = txtTipoCaso.text.toString(),
+            sentenciacaso = txtSentencia.text.toString(),
+            idcliente = 0,
+            idservicio = 0,
+            estadocaso = txtEstadoCaso.text.toString()
         )
 
         val retrofit = RestEngine.buildService().create(CasoService::class.java)
@@ -112,12 +112,12 @@ class CasoActivity : AppCompatActivity() {
     private fun callServicePostCaso() {
         val fecha = "2021-04-10"
         val casoInfo = CasoDataCollectionItem(
-            idcaso = txtIdCaso,
-            tipocaso = txtTipoCaso,
-            sentenciacaso = txtSentencia,
-            idcliente = txtIdCliente,
-            idservicio = txtIdServicio,
-            estadocaso = txtEstadoCaso
+            idcaso = 0,
+            tipocaso = txtTipoCaso.text.toString(),
+            sentenciacaso = txtSentencia.text.toString(),
+            idcliente = 0,
+            idservicio = 0,
+            estadocaso = txtEstadoCaso.text.toString()
 
         )
         addCaso(casoInfo) {

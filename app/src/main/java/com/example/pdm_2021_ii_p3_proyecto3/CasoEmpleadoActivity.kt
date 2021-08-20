@@ -2,13 +2,10 @@ package com.example.pdm_2021_ii_p3_proyecto3
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.Toast
-import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.CasoDataCollectionItem
 import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.CasoEmpleadoDataCollectionItem
 import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.RestApiError
 import com.example.pdm_2021_ii_p3_proyecto3.Service.CasoEmpleadoService
-import com.example.pdm_2021_ii_p3_proyecto3.Service.CasoService
 import com.example.pdm_2021_ii_p3_proyecto3.Service.RestEngine
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_audiencia_detalle.*
@@ -55,10 +52,10 @@ class CasoEmpleadoActivity : AppCompatActivity() {
     private fun callServicePutCasoEmpleado() {
         val fecha = "2021-04-11"
         val casoempleadoInfo = CasoEmpleadoDataCollectionItem(
-            idcaso = txtIdCaso,
+            idcaso = 0,
            // idempleado = txtIdEmpleado,
-            fechainiciotrabajoencaso  = txtFechaInicioT,
-            fechafinaltrabajoencaso   = txtFechaFinalT
+            fechainiciotrabajoencaso  = txtFechaInicioT.text.toString().toDate(),
+            fechafinaltrabajoencaso   = txtFechaFinalT.text.toString().toDate()
            // descripcioncasoempleado   =
         )
 
@@ -114,9 +111,11 @@ class CasoEmpleadoActivity : AppCompatActivity() {
     private fun callServicePostCasoEmpleado() {
         val fecha = "2021-04-10"
         val casoempleadoInfo = CasoEmpleadoDataCollectionItem(
-            idcaso = txtIdCaso,
-            fechainiciotrabajoencaso = txtFechaInicioT,
-            fechafinaltrabajoencaso = txtFechaFinalT
+            idcaso = 0,
+            // idempleado = txtIdEmpleado,
+            fechainiciotrabajoencaso  = txtFechaInicioT.text.toString().toDate(),
+            fechafinaltrabajoencaso   = txtFechaFinalT.text.toString().toDate()
+            // descripcioncasoempleado   =
         )
         addCasoEmpleado(casoempleadoInfo) {
             if (it?.idcaso!= null) {
@@ -175,6 +174,6 @@ class CasoEmpleadoActivity : AppCompatActivity() {
         )
     }
 
-    fun String.toDate(format: String, locale: Locale = Locale.getDefault()): Date = SimpleDateFormat(format, locale).parse(this)
+    fun String.toDate(locale: Locale = Locale.getDefault()): Date = SimpleDateFormat(format(), locale).parse(this)
 }
 
