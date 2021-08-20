@@ -15,77 +15,113 @@
         android:layout_marginEnd="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/txvMensaje"
-                android:layout_width="176dp"
-                android:layout_height="0dp"
-                android:layout_marginBottom="9dp"
-                android:text="Seleccione un servicio"
-                android:textSize="17dp"
-                app:layout_constraintBottom_toTopOf="@+id/lstServicios"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spiCliente" />
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/btnIniciarFactura"
+            app:layout_constraintStart_toEndOf="@+id/btnIniciarFactura">
 
             <Spinner
-                android:id="@+id/spiCliente"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="163dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintBottom_toTopOf="@+id/txvMensaje"
+                android:id="@+id/spnCaso"
+                android:layout_width="261dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="65dp"
+                android:layout_marginEnd="65dp"
+                android:layout_marginBottom="35dp"
+                android:clickable="true"
+                android:saveEnabled="false"
+                app:layout_constraintBottom_toTopOf="@+id/btnIniciarFactura"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spiClientes"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <Spinner
+                android:id="@+id/spiClientes"
+                android:layout_width="261dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginEnd="65dp"
+                android:layout_marginBottom="18dp"
+                app:layout_constraintBottom_toTopOf="@+id/spnCaso"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ListView
                 android:id="@+id/lstServicios"
                 android:layout_width="0dp"
-                android:layout_height="450dp"
-                android:layout_marginStart="23dp"
-                android:layout_marginTop="256dp"
-                android:layout_marginEnd="23dp"
-                android:layout_marginBottom="23dp"
-                app:layout_constraintBottom_toTopOf="@+id/btnAgregar"
+                android:layout_height="300dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="21dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnBorrar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/txvMensaje" />
 
             <Button
                 android:id="@+id/btnBorrar"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="126dp"
-                android:layout_marginEnd="32dp"
                 android:background="@drawable/eliminar"
+                android:enabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnAgregar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lstServicios"
-                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintTop_toBottomOf="@+id/btnCerrarFactura"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/btnAgregar"
-                android:layout_width="48dp"
+                android:id="@+id/btnIniciarFactura"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_marginEnd="127dp"
-                android:background="@drawable/guardar"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="13dp"
+                android:enabled="false"
+                android:text="Iniciar Factura"
+                app:layout_constraintBottom_toTopOf="@+id/txvMensaje"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btnBorrar"
-                app:layout_constraintTop_toBottomOf="@+id/lstServicios"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintEnd_toStartOf="@+id/btnCerrarFactura"
+                app:layout_constraintHorizontal_bias="0.108"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spnCaso" />
+
+            <TextView
+                android:id="@+id/txvMensaje"
+                android:layout_width="175dp"
+                android:layout_height="25dp"
+                android:layout_marginBottom="9dp"
+                android:enabled="false"
+                android:text="Seleccione un servicio"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                app:layout_constraintBottom_toTopOf="@+id/lstServicios"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnIniciarFactura" />
+
+            <Button
+                android:id="@+id/btnCerrarFactura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="299dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="369dp"
+                android:enabled="false"
+                android:text="Cerrar Factura"
+                app:layout_constraintBottom_toTopOf="@+id/btnBorrar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnIniciarFactura"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
