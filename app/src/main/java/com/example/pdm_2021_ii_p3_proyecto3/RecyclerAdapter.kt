@@ -1,5 +1,6 @@
 package com.example.pdm_2021_ii_p3_proyecto3
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,6 +54,73 @@ class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             }
         }
     }
+   private fun irAbogado(itemView: View)
+    {
+        val intent = Intent(itemView.context,AbogadoActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+
+    private fun irAudiencia(itemView: View)
+    {
+        val intent = Intent(itemView.context,AudienciaDetalleActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+    private fun irCai(itemView: View)
+    {
+        val intent = Intent(itemView.context,CaiActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+    private fun irCaso(itemView: View)
+    {
+        val intent = Intent(itemView.context,CasoActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+    private fun irCasoEmpleado(itemView: View)
+    {
+        val intent = Intent(itemView.context,CasoEmpleadoActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+    private fun irCliente(itemView: View)
+    {
+        val intent = Intent(itemView.context,ClienteActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+    private fun irCobro(itemView: View)
+    {
+        val intent = Intent(itemView.context,CobroActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+    private fun irExpediente(itemView: View)
+    {
+        val intent = Intent(itemView.context,ExpedienteActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+    private fun irIndicio(itemView: View)
+    {
+        val intent = Intent(itemView.context,indicioActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+    private fun irJuzgado(itemView: View)
+    {
+        val intent = Intent(itemView.context,JuzgadoActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+    private fun irPrecioHistorico(itemView: View)
+    {
+        val intent = Intent(itemView.context,PrecioHistoricoActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+    private fun irServicio(itemView: View)
+    {
+        val intent = Intent(itemView.context,ServicioActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+    private fun irSucursal(itemView: View)
+    {
+        val intent = Intent(itemView.context,SucursalActivity::class.java)
+        itemView.context.startActivity(intent)
+    }
+
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemTitle.text = titles[position]
         viewHolder.itemDetail.text = details[position]
