@@ -20,7 +20,7 @@
             android:name=".AudienciaDetalleActivity"
             android:exported="true" />
         <activity
-            android:name=".indicioActivity"
+            android:name=".IndicioActivity"
             android:exported="true" />
         <activity
             android:name=".PrincipalActivity"

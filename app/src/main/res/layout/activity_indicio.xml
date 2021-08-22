@@ -6,17 +6,20 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondoactivity"
     android:textAlignment="center"
-    tools:context=".AbogadoActivity">
+    tools:context=".AbogadoActivity"
+    tools:layout_editor_absoluteX="-14dp"
+    tools:layout_editor_absoluteY="-206dp">
 
     <TextView
         android:id="@+id/txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="66dp"
-        android:layout_marginBottom="148dp"
+        android:layout_marginBottom="115dp"
         android:text="Indicio"
         android:textColor="@color/white"
         android:textSize="40dp"
+        android:maxLength="100"
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/spnIdCaso"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,68 +27,77 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txt_Fechainicial"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/txtDescripcion"
+        android:layout_width="294dp"
+        android:layout_height="51dp"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="330dp"
+        android:layout_marginBottom="67dp"
         android:ems="10"
         android:hint="Descripcion de Indicio"
         android:inputType="textPersonName"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/lswIndicio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnIdCaso" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="64dp"
-        android:background="@drawable/eliminar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Fechainicial" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="62dp"
-        android:background="@drawable/actualizar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintStart_toEndOf="@+id/btnGuardarServicio"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Fechainicial" />
-
-    <Button
-        android:id="@+id/btnGuardarServicio"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="86dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="58dp"
-        android:background="@drawable/guardar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Fechainicial" />
-
     <Spinner
         android:id="@+id/spnIdCaso"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="296dp"
+        android:layout_height="54dp"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="29dp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_Fechainicial"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtDescripcion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txv" />
+
+    <Button
+        android:id="@+id/btnBorrarIndicio"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="78dp"
+        android:background="@drawable/eliminar"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnActualizarIndicio"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcion" />
+
+    <Button
+        android:id="@+id/btnActualizarIndicio"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="62dp"
+        android:background="@drawable/actualizar"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toStartOf="@+id/btnBorrarIndicio"
+        app:layout_constraintStart_toEndOf="@+id/btnGuardarIndicio"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcion" />
+
+    <Button
+        android:id="@+id/btnGuardarIndicio"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="58dp"
+        android:background="@drawable/guardar"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toStartOf="@+id/btnActualizarIndicio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcion" />
+
+    <ListView
+        android:id="@+id/lswIndicio"
+        android:layout_width="365dp"
+        android:layout_height="297dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="21dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

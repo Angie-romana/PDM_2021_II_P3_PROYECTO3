@@ -51,11 +51,11 @@ class SucursalActivity : AppCompatActivity() {
                 array.add("Todas las Sucursales")
                 array.add("ID|Nombre Sucursal|Direcciòn|E-mail")
                 for(i in 0..(response.body()!!.size-1)){
-                    array.add(response.body()!!.get(i).idsucursal.toString() + "|" + response.body()!!.get(i).nombresucursal + "|" + response.body()!!.get(i).dirreccionsucursal + "|" + response.body()!!.get(i).telefonosucursal + "|"
+                    array.add(response.body()!!.get(i).idsucursal.toString() + "|" + response.body()!!.get(i).nombresucursal + "|" + response.body()!!.get(i).direccionsucursal + "|" + response.body()!!.get(i).telefonosucursal + "|"
                             + response.body()!!.get(i).emailsucursal )
                     val arrayAdapter: ArrayAdapter<*>
                     arrayAdapter = ArrayAdapter(this@SucursalActivity,android.R.layout.simple_list_item_1,array)
-                    lvwPrincipal.adapter = arrayAdapter
+                    lstSucursal.adapter = arrayAdapter
                 }
 
             }
@@ -94,7 +94,7 @@ class SucursalActivity : AppCompatActivity() {
         val sucursalInfo = SucursalDataCollectionItem(
             idsucursal = idSucursal,
             nombresucursal = txtNombreSucursal.text.toString(),
-            dirreccionsucursal = txtDireccionSucursal.text.toString(),
+            direccionsucursal = txtDireccionSucursal.text.toString(),
             telefonosucursal =  txtTelefonoSucursal.text.toString().toLong(),
             emailsucursal = txtcorreo.text.toString()
 
@@ -129,7 +129,7 @@ class SucursalActivity : AppCompatActivity() {
         val sucursalInfo = SucursalDataCollectionItem(
             idsucursal = 0, // Este se llena solo para no dejar vacio. Es incremental
             nombresucursal = txtNombreSucursal.text.toString(),
-            dirreccionsucursal = txtDireccionSucursal.text.toString(),
+            direccionsucursal = txtDireccionSucursal.text.toString(),
             telefonosucursal = txtTelefonoSucursal.text.toString().toLong(),
             emailsucursal = txtcorreo.text.toString()
         )
@@ -179,11 +179,11 @@ class SucursalActivity : AppCompatActivity() {
                         Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
 
 
-                   /* Toast.makeText(
+                   Toast.makeText(
                         this@SucursalActivity,
                         errorResponse.errorDetails,
                         Toast.LENGTH_LONG
-                    ).show()*/
+                    ).show()
                 } else {
                     Toast.makeText(
                         this@SucursalActivity,

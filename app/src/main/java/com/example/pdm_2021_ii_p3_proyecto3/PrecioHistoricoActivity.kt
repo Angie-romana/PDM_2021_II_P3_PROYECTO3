@@ -1,5 +1,6 @@
 package com.example.pdm_2021_ii_p3_proyecto3
 
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,7 +25,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.ArrayList
+import java.util.*
 
 class PrecioHistoricoActivity : AppCompatActivity() {
     var array = ArrayList<String>()
@@ -37,7 +38,92 @@ class PrecioHistoricoActivity : AppCompatActivity() {
         btnGuardarPrecio.setOnClickListener { v -> callServicePostPrecioHistorico() }
         btnActualizarPrecio.setOnClickListener {v -> actualizarPrecioHistorico(v) }
         btnEliminarPrecio.setOnClickListener { v -> borrarPrecioHistorico(v) }
+        txtFechaInicial.setOnClickListener { capturarFecha() }
+        txtFechaFinal.setOnClickListener { capturarFecha2() }
     }
+    private fun capturarFecha() {
+        //Calendar
+        //Calendar
+        val c = Calendar.getInstance()
+        val date = Date()
+
+        var año = c.get(Calendar.YEAR)
+        var mes = c.get(Calendar.MONTH)+1
+        var dia = c.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this, { view, mAño, mMes, mDia ->
+            txtFechaInicial.setText(""+mAño+"-"+(mMes+1)+"-"+mDia)
+            c.set(mAño,mMes,(mDia))
+          if(mDia<9){
+              if(mMes.toInt()>9){
+                  dia = c.get(Calendar.DAY_OF_MONTH)
+                  var año = c.get(Calendar.YEAR)
+                  var mes = c.get(Calendar.MONTH)+1
+                  txtFechaInicial.setText(""+año+"-"+mes+"-"+"0$dia")}
+              if(mMes.toInt()<9){
+                  dia = c.get(Calendar.DAY_OF_MONTH)
+                  var año = c.get(Calendar.YEAR)
+                  var mes = c.get(Calendar.MONTH)+1
+                  txtFechaInicial.setText(""+año+"-"+"0$mes"+"-"+"0$dia")}
+          }
+            if(mDia>9){
+                if(mMes.toInt()>9){
+                    dia = c.get(Calendar.DAY_OF_MONTH)
+                    var año = c.get(Calendar.YEAR)
+                    var mes = c.get(Calendar.MONTH)+1
+                    txtFechaInicial.setText(""+año+"-"+mes+"-"+"$dia")}
+                if(mMes.toInt()<9){
+                    dia = c.get(Calendar.DAY_OF_MONTH)
+                    var año = c.get(Calendar.YEAR)
+                    var mes = c.get(Calendar.MONTH)+1
+                    txtFechaInicial.setText(""+año+"-"+"0$mes"+"-"+"$dia")}
+            }
+
+        },año,mes-1,dia)
+        dpd.show()
+    }
+    private fun capturarFecha2() {
+        //Calendar
+        val c = Calendar.getInstance()
+        val date = Date()
+
+        var año = c.get(Calendar.YEAR)
+        var mes = c.get(Calendar.MONTH)+1
+        var dia = c.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this, { view, mAño, mMes, mDia ->
+            txtFechaFinal.setText(""+mAño+"-"+(mMes+1)+"-"+mDia)
+            if(mDia<9){
+                if(mMes.toInt()>9){
+                    dia = c.get(Calendar.DAY_OF_MONTH)
+                    var año = c.get(Calendar.YEAR)
+                    var mes = c.get(Calendar.MONTH)+1
+                    txtFechaFinal.setText(""+año+"-"+mes+"-"+"0$dia")}
+                if(mMes.toInt()<9){
+                    dia = c.get(Calendar.DAY_OF_MONTH)
+                    var año = c.get(Calendar.YEAR)
+                    var mes = c.get(Calendar.MONTH)+1
+                    txtFechaFinal.setText(""+año+"-"+"0$mes"+"-"+"0$dia")}
+            }
+            if(mDia>9) {
+                if (mMes.toInt() > 9) {
+                    dia = c.get(Calendar.DAY_OF_MONTH)
+                    var año = c.get(Calendar.YEAR)
+                    var mes = c.get(Calendar.MONTH) + 1
+                    txtFechaFinal.setText("" + año + "-" + mes + "-" + "$dia")
+                }
+                if (mMes.toInt() < 9) {
+                    dia = c.get(Calendar.DAY_OF_MONTH)
+                    var año = c.get(Calendar.YEAR)
+                    var mes = c.get(Calendar.MONTH) + 1
+                    txtFechaFinal.setText("" + año + "-" + "0$mes" + "-" + "$dia")
+                }
+            }
+        },año,mes-1,dia)
+        dpd.show()
+    }
+
+    /////PARA EL SPINNER EL GET SERVCIO
     private fun callServiceGetServicio() {
         val personService: ServicioService = RestEngine.buildService().create(ServicioService::class.java)
         var result: Call<List<ServicioDataCollectionItem>> = personService.listServicio()
@@ -53,7 +139,7 @@ class PrecioHistoricoActivity : AppCompatActivity() {
             ) {
                 servicioElegir.add("Seleccione el Servicio")
                 for(i in 0..(response.body()!!.size-1)){
-                    servicioElegir.add(response.body()!!.get(i).idservicio.toString())// + "|" + response.body()!!.get(i).nombreservicio)
+                    servicioElegir.add(response.body()!!.get(i).idservicio.toString() + "|" + response.body()!!.get(i).nombreservicio)
                     val arrayAdapter: ArrayAdapter<*>
                     arrayAdapter = ArrayAdapter(this@PrecioHistoricoActivity,android.R.layout.simple_list_item_1,servicioElegir)
                     spnPrecioServicio.adapter = arrayAdapter
@@ -80,7 +166,7 @@ class PrecioHistoricoActivity : AppCompatActivity() {
                 array.add("Todas los Registros de Precio")
                 array.add("ID|Fecha Inicial|Fecha Final|Precio|Servicio")
                 for(i in 0..(response.body()!!.size-1)){
-                    array.add(response.body()!!.get(i).idpreciohistorico.toString() + "|" + response.body()!!.get(i).fechainicialpreciohistorico + "|" + response.body()!!.get(i).fechafinalpreciohistorico + "¬"
+                    array.add(response.body()!!.get(i).idpreciohistorico.toString() + "|" + response.body()!!.get(i).fechainicialpreciohistorico + "|" + response.body()!!.get(i).fechafinalpreciohistorico + "|"
                             +response.body()!!.get(i).precio.toString()+ "|" + response.body()!!.get(i).idservicio)
 
                     val arrayAdapter: ArrayAdapter<*>
@@ -120,26 +206,17 @@ class PrecioHistoricoActivity : AppCompatActivity() {
     }
 
     private fun callServicePutPrecioHistorico(idPrecioHistorico:Long) {
-        var id:String
-        var nombre: String
-        var seleccion=spnPrecioServicio.selectedItem.toString()
+        var lista= spnPrecioServicio.selectedItem.toString().split("|","=")
+        var id=lista[0]
 
-        for (servicio in servicioElegir) {
-            val lista = servicio.toString().split("|", "=")
-            id = lista[1]
-            nombre = lista[2]
-            if (seleccion.contains(id)){
 
-                seleccion = id
-            }
-        }
 
         val preciohistoricoInfo = PrecioHistoricoDataCollectionItem(
             idpreciohistorico = idPrecioHistorico,
             fechainicialpreciohistorico = txtFechaInicial.text.toString(),
             fechafinalpreciohistorico = txtFechaFinal.text.toString(),
             precio = txtPrecio.text.toString().toDouble(),
-            idservicio = seleccion.toLong()
+            idservicio = id.toLong()
 
 
 
@@ -176,12 +253,14 @@ class PrecioHistoricoActivity : AppCompatActivity() {
         if(noLoSuficienteLargo()){
             return
         }
+        var lista= spnPrecioServicio.selectedItem.toString().split("|","=")
+        var id=lista[0]
         val  preciohistoricoInfo = PrecioHistoricoDataCollectionItem(
             idpreciohistorico = 0, // Este se llena solo para no dejar vacio. Es incremental
             fechainicialpreciohistorico = txtFechaInicial.text.toString(),
             fechafinalpreciohistorico = txtFechaFinal.text.toString(),
             precio = txtPrecio.text.toString().toDouble(),
-            idservicio = spnPrecioServicio.selectedItem.toString().toLong()
+            idservicio = id.toLong()
             )
         addPrecioHistorico(preciohistoricoInfo) {
             if (it?.idpreciohistorico != null) {

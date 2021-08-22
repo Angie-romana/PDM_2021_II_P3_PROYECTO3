@@ -4,12 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_abogado.xml" value="0.21557971014492755" />
+        <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_caso.xml" value="0.25416666666666665" />
+        <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_cobro.xml" value="0.25416666666666665" />
         <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_indicio.xml" value="0.25181159420289856" />
         <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_juzgado.xml" value="0.264" />
         <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_precio_historico.xml" value="0.25181159420289856" />
         <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_servicio.xml" value="0.21014492753623187" />
         <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/activity_sucursal.xml" value="0.264" />
         <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/alert_dialog_abogado.xml" value="0.21557971014492755" />
+        <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/alert_dialog_indicio.xml" value="0.25416666666666665" />
         <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/alert_dialog_juzgado.xml" value="0.25181159420289856" />
         <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/alert_dialog_preciohistorico.xml" value="0.2203125" />
         <entry key="..\:/Univesidad/Asignaturas/12 Periodo/Derecho Digital/PDM_2021_II_P3_PROYECTO3/app/src/main/res/layout/alert_dialog_servicio.xml" value="0.23854166666666668" />
