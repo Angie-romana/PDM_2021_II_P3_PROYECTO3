@@ -5,7 +5,7 @@ class SucursalDataCollection:ArrayList<SucursalDataCollectionItem>()
 data class SucursalDataCollectionItem (
     val idsucursal:Long?,
     val nombresucursal:String,
-    val dirreccionsucursal:String,
-    val telefonosucursal:Long=0,
+    val direccionsucursal:String,
+    val telefonosucursal:Long,
     val emailsucursal:String
 )
