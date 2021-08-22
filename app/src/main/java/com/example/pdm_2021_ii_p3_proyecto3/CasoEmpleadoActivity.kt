@@ -7,14 +7,22 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.CasoDataCollectionItem
 import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.CasoEmpleadoDataCollectionItem
 import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.RestApiError
+import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.ServicioDataCollectionItem
 import com.example.pdm_2021_ii_p3_proyecto3.Service.CasoEmpleadoService
+import com.example.pdm_2021_ii_p3_proyecto3.Service.CasoService
 import com.example.pdm_2021_ii_p3_proyecto3.Service.RestEngine
+import com.example.pdm_2021_ii_p3_proyecto3.Service.ServicioService
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_audiencia_detalle.*
+import kotlinx.android.synthetic.main.activity_audiencia_detalle.txtIdcaso
 import kotlinx.android.synthetic.main.activity_caso.*
 import kotlinx.android.synthetic.main.activity_caso_empleado.*
+import kotlinx.android.synthetic.main.activity_cobro.*
+import kotlinx.android.synthetic.main.activity_precio_historico.*
+import kotlinx.android.synthetic.main.activity_sucursal.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,16 +31,45 @@ import java.util.*
 
 class CasoEmpleadoActivity : AppCompatActivity() {
     var array = ArrayList<String>()
+    var servicioElegir = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_caso_empleado)
+        callServiceGetCasoEmpleado()
+        callServiceGetServicio()
         btnGuardarCasoEmpleado.setOnClickListener { v -> callServicePostCasoEmpleado() }
         btnActualizarCasoEmpleado.setOnClickListener { v -> actualizarCasoEmpleado(v) }
         btnEliminarCasoEmpleado.setOnClickListener { v -> borrarCasoEmpleado(v) }
     }
+private fun callServiceGetServicio()
+{
+    val personService: ServicioService = RestEngine.buildService().create(ServicioService::class.java)
+    var result: Call<List<ServicioDataCollectionItem>> = personService.listServicio()
 
+    result.enqueue(object :  Callback<List<ServicioDataCollectionItem>> {
+        override fun onFailure(call: Call<List<ServicioDataCollectionItem>>, t: Throwable) {
+            Toast.makeText(this@CasoEmpleadoActivity,"Error",Toast.LENGTH_LONG).show()
+        }
+
+        override fun onResponse(
+            call: Call<List<ServicioDataCollectionItem>>,
+            response: Response<List<ServicioDataCollectionItem>>
+        ) {
+            servicioElegir.add("Seleccione el Servicio")
+            for(i in 0..(response.body()!!.size-1)){
+                servicioElegir.add(response.body()!!.get(i).idservicio.toString() + "|" + response.body()!!.get(i).nombreservicio)
+                val arrayAdapter: ArrayAdapter<*>
+                arrayAdapter = ArrayAdapter(this@CasoEmpleadoActivity,android.R.layout.simple_list_item_1,servicioElegir)
+                spnIdServicio.adapter = arrayAdapter
+            }
+
+
+
+        }
+    })
+}
     private fun callServiceGetCasoEmpleado() {
-        val casoempleadoService: CasoEmpleadoService =
+      /*  val casoempleadoService: CasoEmpleadoService =
             RestEngine.buildService().create(CasoEmpleadoService::class.java)
         var result: Call<List<CasoEmpleadoDataCollectionItem>> =
             casoempleadoService.listCasoEmpleado()
@@ -62,6 +99,32 @@ class CasoEmpleadoActivity : AppCompatActivity() {
                     )
                     lvwCasoEmpleado.adapter = arrayAdapter
                 }
+
+            }
+        })*/
+
+
+        val casoService: CasoService = RestEngine.buildService().create(CasoService::class.java)
+        var result: Call<List<CasoDataCollectionItem>> = casoService.listCaso()
+
+        result.enqueue(object :  Callback<List<CasoDataCollectionItem>> {
+            override fun onFailure(call: Call<List<CasoDataCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@CasoEmpleadoActivity,"Error",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<List<CasoDataCollectionItem>>,
+                response: Response<List<CasoDataCollectionItem>>
+            ) {
+                servicioElegir.add("Seleccione el id del caso")
+                for(i in 0..(response.body()!!.size-1)){
+                    servicioElegir.add(response.body()!!.get(i).idcaso.toString() )
+                    val arrayAdapter: ArrayAdapter<*>
+                    arrayAdapter = ArrayAdapter(this@CasoEmpleadoActivity,android.R.layout.simple_list_item_1,servicioElegir)
+                    spnIdCaso.adapter = arrayAdapter
+                }
+
+
 
             }
         })
@@ -127,8 +190,8 @@ class CasoEmpleadoActivity : AppCompatActivity() {
 
 
     private fun estaVacio():Boolean{
-        if(txtIdCaso.text.toString().isEmpty()) {
-            txtIdCaso.error ="Debe rellenar el id del caso"
+        if(txtCai.text.toString().isEmpty()) {
+            txtCai.error ="Debe rellenar el id del caso"
             return true
         }else if(txtFechaInicioT.text.toString().isEmpty()){
             txtFechaInicioT.error = "Debe rellenar la fecha"
@@ -143,8 +206,8 @@ class CasoEmpleadoActivity : AppCompatActivity() {
     }
 
     private fun noLoSuficienteLargo():Boolean{
-        if(txtIdCaso.text.toString().length != 15) {
-            txtIdCaso.error ="El id del caso no puede ser distinto a 13 dígitos, no olvide ingresar los guiones"
+        if(txtCai.text.toString().length != 15) {
+            txtCai.error ="El id del caso no puede ser distinto a 13 dígitos, no olvide ingresar los guiones"
             return true
         }else if(txtFechaInicioT.text.toString().length < 3){
             txtFechaInicioT.error = "La fecha no puede ser menor a 3 caracteres"
@@ -237,31 +300,38 @@ class CasoEmpleadoActivity : AppCompatActivity() {
     }
 //
     private fun callServiceDeleteCasoEmpleado(idCaso: Long) {
-        val casoempleadoService:CasoEmpleadoService = RestEngine.buildService().create(CasoEmpleadoService::class.java)
-        var result: Call<ResponseBody> = casoempleadoService.deleteCasoEmpleado(idCaso)
+    val casoempleadoService: CasoEmpleadoService =
+        RestEngine.buildService().create(CasoEmpleadoService::class.java)
+    var result: Call<ResponseBody> = casoempleadoService.deleteCasoEmpleado(idCaso)
 
-        result.enqueue(object :  Callback<ResponseBody> {
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@CasoEmpleadoActivity,"Error",Toast.LENGTH_LONG).show()
-            }
-            override fun onResponse(
-                call: Call<ResponseBody>,
-                response: Response<ResponseBody>
-            ) {
-                if (response.isSuccessful) {
-                    Toast.makeText(this@CasoEmpleadoActivity,"DELETE",Toast.LENGTH_LONG).show()
-                }
-                else if (response.code() == 401){
-                    Toast.makeText(this@CasoEmpleadoActivity,"Sesion expirada",Toast.LENGTH_LONG).show()
-                }
-                else{
-                    Toast.makeText(this@CasoEmpleadoActivity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
-                }
-            }
-        })
-    }
+    result.enqueue(object : Callback<ResponseBody> {
+        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            Toast.makeText(this@CasoEmpleadoActivity, "Error", Toast.LENGTH_LONG).show()
+        }
 
-}//
+        override fun onResponse(
+            call: Call<ResponseBody>,
+            response: Response<ResponseBody>
+        ) {
+            if (response.isSuccessful) {
+                Toast.makeText(this@CasoEmpleadoActivity, "DELETE", Toast.LENGTH_LONG).show()
+            } else if (response.code() == 401) {
+                Toast.makeText(this@CasoEmpleadoActivity, "Sesion expirada", Toast.LENGTH_LONG)
+                    .show()
+            } else {
+                Toast.makeText(
+                    this@CasoEmpleadoActivity,
+                    "Fallo al traer el item",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    })
+}
+
+}
+
+//
 
 
 
