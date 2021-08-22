@@ -18,5 +18,5 @@ interface CasoEmpleadoService {
     @PUT("casoempleado")
     fun updateCasoEmpleado(@Body casoempleadoData: CasoEmpleadoDataCollectionItem): Call<CasoEmpleadoDataCollectionItem>
     @DELETE("casoempleado/delete/{id}")
-    fun deleteCasoEmpleado(@Path("id") id: EditText): Call<ResponseBody>
+    fun deleteCasoEmpleado(@Path("id") id: Long): Call<ResponseBody>
 }

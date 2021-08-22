@@ -19,5 +19,5 @@ interface AudienciaService {
     @PUT("audiencia")
     fun updateAudiencia(@Body audienceData: AudienciaDataCollectionItem): Call<AudienciaDataCollectionItem>
     @DELETE("audiencia/delete/{id}")
-    fun deleteAudiencia(@Path("id") id: EditText): Call<ResponseBody>
+    fun deleteAudiencia(@Path("id") id: Long): Call<ResponseBody>
 }

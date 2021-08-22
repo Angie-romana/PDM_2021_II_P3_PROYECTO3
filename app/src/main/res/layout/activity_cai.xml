@@ -5,131 +5,183 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo3"
-    tools:context=".CaiActivity">
+    android:textAlignment="center"
+    tools:context=".AbogadoActivity">
+
 
     <TextView
-        android:id="@+id/txvTituloCAI"
+        android:id="@+id/txvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="482dp"
+        android:layout_marginTop="74dp"
         android:text="CAI"
         android:textColor="@color/white"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnActualizarCAI"
+        android:textSize="60dp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtIdCAI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="524dp"
-        android:ems="10"
-        android:hint="Fecha limite"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txtCAI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="296dp"
-        android:layout_marginBottom="265dp"
-        android:ems="10"
-        android:hint="CAI"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnGuardarCAI"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txtRangoIni"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="367dp"
-        android:layout_marginBottom="196dp"
-        android:ems="10"
-        android:hint="Rango inicial"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnEliminarCAI"
-        app:layout_constraintStart_toStartOf="@+id/txtCAI"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txtRangoFinal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="444dp"
-        android:ems="10"
-        android:hint="Rango final"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txtFechaLimite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="224dp"
-        android:ems="10"
-        android:hint="Id de CAI"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnGuardarCAI"
+    <ScrollView
+        android:id="@+id/scrollViewCai"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="56dp"
-        android:background="@drawable/guardar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnActualizarCAI"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCAI"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/btnActualizarCAI"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/actualizar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnEliminarCAI"
-        app:layout_constraintStart_toEndOf="@+id/btnGuardarCAI"
-        app:layout_constraintTop_toBottomOf="@+id/txvTituloCAI"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/btnEliminarCAI"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/eliminar"
-        android:backgroundTint="@color/purple_700"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnActualizarCAI"
-        app:layout_constraintTop_toBottomOf="@+id/txtRangoIni"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/txtSentencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="27dp"
+                android:ems="10"
+                android:hint="Rango inicial"
+                android:inputType="textPersonName"
+                android:maxLength="15"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/txtIdCliente"
+                app:layout_constraintStart_toStartOf="@+id/txtTipoCaso"
+                app:layout_constraintTop_toBottomOf="@+id/txtTipoCaso" />
+
+            <EditText
+                android:id="@+id/txtIdCaso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="78dp"
+                android:layout_marginTop="226dp"
+                android:layout_marginEnd="78dp"
+                android:layout_marginBottom="33dp"
+                android:ems="10"
+                android:hint="Cai"
+                android:inputType="textPersonName"
+                android:maxLength="40"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/txtTipoCaso"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/lvwCaso"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/txtIdCliente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="23dp"
+                android:ems="10"
+                android:hint="Rango final"
+                android:inputType="textPersonName"
+                android:maxLength="14"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/txtSentencia"
+                app:layout_constraintTop_toBottomOf="@+id/txtSentencia" />
+
+
+            <EditText
+                android:id="@+id/txtEstadoCaso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="31dp"
+                android:ems="10"
+                android:hint="Fecha limite"
+                android:inputType="textPersonName"
+                android:maxLength="30"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/btnGuardarCAI"
+                app:layout_constraintEnd_toEndOf="@+id/btnBorrarCAI"
+                app:layout_constraintTop_toBottomOf="@+id/txtIdCliente" />
+
+            <EditText
+                android:id="@+id/txtTipoCaso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="23dp"
+                android:digits="1234567890"
+                android:ems="10"
+                android:hint="Id cai"
+                android:inputType="textPersonName"
+                android:maxLength="40"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/txtSentencia"
+                app:layout_constraintStart_toStartOf="@+id/txtIdCaso"
+                app:layout_constraintTop_toBottomOf="@+id/txtIdCaso" />
+
+            <Button
+                android:id="@+id/btnBorrarCAI"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="73dp"
+                android:layout_marginEnd="57dp"
+                android:layout_marginBottom="55dp"
+                android:background="@drawable/eliminar"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBottom_toTopOf="@+id/lvwCaso"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnActualizarCAI"
+                app:layout_constraintTop_toTopOf="@+id/txtEstadoCaso"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnGuardarCAI"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="75dp"
+                android:layout_marginEnd="53dp"
+                android:background="@drawable/guardar"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBottom_toTopOf="@+id/btnActualizarCAI"
+                app:layout_constraintEnd_toStartOf="@+id/btnActualizarCAI"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtEstadoCaso"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnActualizarCAI"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginBottom="51dp"
+                android:background="@drawable/actualizar"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btnGuardarCAI"
+                app:layout_constraintBottom_toTopOf="@+id/lvwCaso"
+                app:layout_constraintEnd_toStartOf="@+id/btnBorrarCAI"
+                app:layout_constraintStart_toEndOf="@+id/btnGuardarCAI"
+                app:layout_constraintTop_toBottomOf="@+id/btnGuardarCAI"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ListView
+                android:id="@+id/lvwCaso"
+                android:layout_width="0dp"
+                android:layout_height="350dp"
+                android:layout_marginStart="26dp"
+                android:layout_marginEnd="26dp"
+                android:entries="@android:array/phoneTypes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnActualizarCAI" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
