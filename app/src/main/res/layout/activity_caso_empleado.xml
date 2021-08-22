@@ -92,7 +92,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFechaInicioT"
         tools:ignore="SpeakableTextPresentCheck" />
-
+//
     <Button
         android:id="@+id/btnActualizarCasoEmpleado"
         android:layout_width="0dp"

@@ -57,7 +57,7 @@ class AudienciaDetalleActivity : AppCompatActivity() {
 
             }
         })
-    }
+    }//
     private fun callServicePostAudiencia() {
 
         val audienciaInfo = AudienciaDataCollectionItem(

@@ -32,7 +32,7 @@ class CasoActivity : AppCompatActivity() {
         btnBorrarCaso.setOnClickListener { v -> borrarCaso(v) }
     }
 
-
+//
     private fun callServiceGetCasos() {
         val casoService: CasoService = RestEngine.buildService().create(CasoService::class.java)
         var result: Call<List<CasoDataCollectionItem>> = casoService.listCaso()
