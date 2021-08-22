@@ -55,7 +55,8 @@ class CaiActivity : AppCompatActivity() {
                             + response.body()!!.get(i).fechalimite )
                     val arrayAdapter: ArrayAdapter<*>
                     arrayAdapter = ArrayAdapter(this@CaiActivity,android.R.layout.simple_list_item_1,array)
-                    //lvwCAI.adapter = arrayAdapter
+
+                    //lvwCai.Adapter = arrayAdapter
                 }
 
             }
@@ -66,10 +67,10 @@ class CaiActivity : AppCompatActivity() {
 
         val caiInfo = CaiDataCollectionItem(
             idcai = 0,
-            cai = txtIdCaso.text.toString(),
-            rangoinicial = txtSentencia.text.toString(),
-            rangofinal = txtIdCliente.text.toString(),
-            fechalimite = txtEstadoCaso.text.toString()
+            cai = txtCai.text.toString(),
+            rangoinicial = txtRangoInicial.text.toString(),
+            rangofinal = txtRangoFinal.text.toString(),
+            fechalimite = txtFechaLimite.text.toString()
 
         )
         addCai(caiInfo) {
@@ -131,40 +132,40 @@ class CaiActivity : AppCompatActivity() {
             txtCAI.error = "Debe rellenar el cai"
             return true
         }*/
-        if(txtSentencia.text.toString().isEmpty()) {
-            txtSentencia.error ="Debe rellenar el rango inicial"
+        if(txtRangoInicial.text.toString().isEmpty()) {
+            txtRangoInicial.error ="Debe rellenar el rango inicial"
             return true
         }
-        if(txtIdCliente.text.toString().isEmpty()) {
-            txtIdCliente.error ="Debe rellenar el rango final"
+        if(txtRangoFinal.text.toString().isEmpty()) {
+            txtRangoFinal.error ="Debe rellenar el rango final"
             return true
         }
-        if(txtEstadoCaso.text.toString().isEmpty()) {
-            txtEstadoCaso.error ="Debe rellenar la fecha limite"
+        if(txtFechaLimite.text.toString().isEmpty()) {
+            txtFechaLimite.error ="Debe rellenar la fecha limite"
             return true
         }
 
         return false
     }
-
+//
     private fun noLoSuficienteLargo():Boolean{
-        /*if(txtIdCAI.text.toString().length != 15) {
-            txtIdCAI.error ="El id cai no puede ser distinto a 13 dígitos, no olvide ingresar los guiones"
+        if(txtIdCai.text.toString().length != 15) {
+            txtIdCai.error ="El id cai no puede ser distinto a 13 dígitos, no olvide ingresar los guiones"
             return true
-        }else if(txtCAI.text.toString().length < 3){
-            txtCAI.error = "El cai no puede ser  menor a 3 caracteres"
-            return true
-        }*/
-        if(txtSentencia.text.toString().length <3) {
-            txtSentencia.error ="El rango inicial no puede ser menor a 3 caracteres "
+        }else if(txtCai.text.toString().length < 3){
+            txtCai.error = "El cai no puede ser  menor a 3 caracteres"
             return true
         }
-        if(txtIdCliente.text.toString().length <3) {
-            txtIdCliente.error ="El rango final no puede ser menor a 3 caracteres "
+        if(txtRangoInicial.text.toString().length <3) {
+            txtRangoInicial.error ="El rango inicial no puede ser menor a 3 caracteres "
             return true
         }
-        if(txtEstadoCaso.text.toString().length <4) {
-            txtEstadoCaso.error ="La fecha limite no puede ser menor a 4 digitos"
+        if(txtRangoFinal.text.toString().length <3) {
+            txtRangoFinal.error ="El rango final no puede ser menor a 3 caracteres "
+            return true
+        }
+        if(txtFechaLimite.text.toString().length <4) {
+            txtFechaLimite.error ="La fecha limite no puede ser menor a 4 digitos"
             return true
         }
 
@@ -199,10 +200,10 @@ class CaiActivity : AppCompatActivity() {
 
         val caiInfo = CaiDataCollectionItem(
             idcai = 0,
-            cai = txtIdCaso.text.toString(),
-            rangoinicial = txtSentencia.text.toString(),
-            rangofinal = txtIdCliente.text.toString(),
-            fechalimite = txtEstadoCaso.text.toString()
+            cai = txtCai.text.toString(),
+            rangoinicial = txtRangoInicial.text.toString(),
+            rangofinal = txtRangoFinal.text.toString(),
+            fechalimite = txtFechaLimite.text.toString()
 
         )
 

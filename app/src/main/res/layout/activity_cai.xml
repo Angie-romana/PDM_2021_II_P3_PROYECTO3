@@ -8,7 +8,7 @@
     android:textAlignment="center"
     tools:context=".AbogadoActivity">
 
-
+//
     <TextView
         android:id="@+id/txvTitulo"
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/txtSentencia"
+                android:id="@+id/txtRangoInicial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="27dp"
@@ -51,12 +51,12 @@
                 android:maxLength="15"
                 android:minHeight="48dp"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@+id/txtIdCliente"
-                app:layout_constraintStart_toStartOf="@+id/txtTipoCaso"
-                app:layout_constraintTop_toBottomOf="@+id/txtTipoCaso" />
+                app:layout_constraintBottom_toTopOf="@+id/txtRangoFinal"
+                app:layout_constraintStart_toStartOf="@+id/txtIdCai"
+                app:layout_constraintTop_toBottomOf="@+id/txtIdCai" />
 
             <EditText
-                android:id="@+id/txtIdCaso"
+                android:id="@+id/txtCai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="78dp"
@@ -69,14 +69,14 @@
                 android:maxLength="40"
                 android:minHeight="48dp"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@+id/txtTipoCaso"
+                app:layout_constraintBottom_toTopOf="@+id/txtIdCai"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/lvwCaso"
+                app:layout_constraintStart_toStartOf="@+id/lvwCai"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/txtIdCliente"
+                android:id="@+id/txtRangoFinal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="23dp"
@@ -86,12 +86,12 @@
                 android:maxLength="14"
                 android:minHeight="48dp"
                 android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="@+id/txtSentencia"
-                app:layout_constraintTop_toBottomOf="@+id/txtSentencia" />
+                app:layout_constraintStart_toStartOf="@+id/txtRangoInicial"
+                app:layout_constraintTop_toBottomOf="@+id/txtRangoInicial" />
 
 
             <EditText
-                android:id="@+id/txtEstadoCaso"
+                android:id="@+id/txtFechaLimite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="40dp"
@@ -104,10 +104,10 @@
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/btnGuardarCAI"
                 app:layout_constraintEnd_toEndOf="@+id/btnBorrarCAI"
-                app:layout_constraintTop_toBottomOf="@+id/txtIdCliente" />
+                app:layout_constraintTop_toBottomOf="@+id/txtRangoFinal" />
 
             <EditText
-                android:id="@+id/txtTipoCaso"
+                android:id="@+id/txtIdCai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="23dp"
@@ -118,9 +118,9 @@
                 android:maxLength="40"
                 android:minHeight="48dp"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@+id/txtSentencia"
-                app:layout_constraintStart_toStartOf="@+id/txtIdCaso"
-                app:layout_constraintTop_toBottomOf="@+id/txtIdCaso" />
+                app:layout_constraintBottom_toTopOf="@+id/txtRangoInicial"
+                app:layout_constraintStart_toStartOf="@+id/txtCai"
+                app:layout_constraintTop_toBottomOf="@+id/txtCai" />
 
             <Button
                 android:id="@+id/btnBorrarCAI"
@@ -131,10 +131,10 @@
                 android:layout_marginBottom="55dp"
                 android:background="@drawable/eliminar"
                 android:backgroundTint="@color/purple_700"
-                app:layout_constraintBottom_toTopOf="@+id/lvwCaso"
+                app:layout_constraintBottom_toTopOf="@+id/lvwCai"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnActualizarCAI"
-                app:layout_constraintTop_toTopOf="@+id/txtEstadoCaso"
+                app:layout_constraintTop_toTopOf="@+id/txtFechaLimite"
                 app:layout_constraintVertical_bias="0.0"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -149,7 +149,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/btnActualizarCAI"
                 app:layout_constraintEnd_toStartOf="@+id/btnActualizarCAI"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtEstadoCaso"
+                app:layout_constraintTop_toBottomOf="@+id/txtFechaLimite"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
@@ -161,14 +161,14 @@
                 android:background="@drawable/actualizar"
                 android:backgroundTint="@color/purple_700"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btnGuardarCAI"
-                app:layout_constraintBottom_toTopOf="@+id/lvwCaso"
+                app:layout_constraintBottom_toTopOf="@+id/lvwCai"
                 app:layout_constraintEnd_toStartOf="@+id/btnBorrarCAI"
                 app:layout_constraintStart_toEndOf="@+id/btnGuardarCAI"
                 app:layout_constraintTop_toBottomOf="@+id/btnGuardarCAI"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ListView
-                android:id="@+id/lvwCaso"
+                android:id="@+id/lvwCai"
                 android:layout_width="0dp"
                 android:layout_height="350dp"
                 android:layout_marginStart="26dp"
