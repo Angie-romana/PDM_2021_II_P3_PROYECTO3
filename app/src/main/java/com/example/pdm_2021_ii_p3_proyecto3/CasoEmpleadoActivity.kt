@@ -26,6 +26,9 @@ class CasoEmpleadoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_caso_empleado)
+        btnGuardarCasoEmpleado.setOnClickListener { v -> callServicePostCasoEmpleado() }
+        btnActualizarCasoEmpleado.setOnClickListener { v -> actualizarCasoEmpleado(v) }
+        btnEliminarCasoEmpleado.setOnClickListener { v -> borrarCasoEmpleado(v) }
     }
 
     private fun callServiceGetCasoEmpleado() {
@@ -57,7 +60,7 @@ class CasoEmpleadoActivity : AppCompatActivity() {
                         android.R.layout.simple_list_item_1,
                         array
                     )
-                    //lvwCasoEmpleado.adapter = arrayAdapter
+                    lvwCasoEmpleado.adapter = arrayAdapter
                 }
 
             }
@@ -232,7 +235,7 @@ class CasoEmpleadoActivity : AppCompatActivity() {
         builder.setNegativeButton("Cancelar"){dialogInterface, i -> return@setNegativeButton}
         builder.show()
     }
-
+//
     private fun callServiceDeleteCasoEmpleado(idCaso: Long) {
         val casoempleadoService:CasoEmpleadoService = RestEngine.buildService().create(CasoEmpleadoService::class.java)
         var result: Call<ResponseBody> = casoempleadoService.deleteCasoEmpleado(idCaso)

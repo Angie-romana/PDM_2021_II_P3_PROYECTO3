@@ -7,7 +7,7 @@
     android:background="@drawable/fondo6"
     android:textAlignment="center"
     tools:context=".AbogadoActivity">
-
+//
 
     <TextView
         android:id="@+id/txvTitulo"

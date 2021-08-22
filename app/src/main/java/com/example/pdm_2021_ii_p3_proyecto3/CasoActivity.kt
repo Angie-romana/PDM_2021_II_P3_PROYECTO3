@@ -29,7 +29,7 @@ class CasoActivity : AppCompatActivity() {
         callServiceGetCasos()
         btnGuardarCaso.setOnClickListener { v -> callServicePostCaso() }
         btnActualizarCaso.setOnClickListener { v -> actualizarCaso(v) }
-        btnEliminarCaso.setOnClickListener { v -> borrarCaso(v) }
+        btnBorrarCaso.setOnClickListener { v -> borrarCaso(v) }
     }
 
 
@@ -101,7 +101,7 @@ class CasoActivity : AppCompatActivity() {
             override fun onFailure(call: Call<CasoDataCollectionItem>, t: Throwable) {
                 onResult(null)
             }
-
+//
             override fun onResponse(
                 call: Call<CasoDataCollectionItem>,
                 response: Response<CasoDataCollectionItem>

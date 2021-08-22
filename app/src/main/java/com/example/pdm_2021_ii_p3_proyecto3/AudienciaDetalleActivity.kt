@@ -22,7 +22,7 @@ import retrofit2.Response
 import java.util.*
 class AudienciaDetalleActivity : AppCompatActivity() {
     var array = ArrayList<String>()
-
+//
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_audiencia_detalle)

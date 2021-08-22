@@ -11,3 +11,4 @@ data class CasoEmpleadoDataCollectionItem(
     val fechafinaltrabajoencaso: String,
   //  val descripcioncasoempleado:EditText
 )
+//
