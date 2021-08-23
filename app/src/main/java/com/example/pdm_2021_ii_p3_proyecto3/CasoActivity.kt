@@ -15,11 +15,10 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_audiencia_detalle.*
 import kotlinx.android.synthetic.main.activity_cai.*
 import kotlinx.android.synthetic.main.activity_caso.*
-import kotlinx.android.synthetic.main.activity_caso.txtCai
-import kotlinx.android.synthetic.main.activity_caso.txtFechaLimite
-import kotlinx.android.synthetic.main.activity_caso.txtIdCai
-import kotlinx.android.synthetic.main.activity_caso.txtRangoFinal
-import kotlinx.android.synthetic.main.activity_caso.txtRangoInicial
+import kotlinx.android.synthetic.main.activity_caso.txtIdCaso
+import kotlinx.android.synthetic.main.activity_caso.txtEstadoCaso
+import kotlinx.android.synthetic.main.activity_caso.txtIdCliente
+import kotlinx.android.synthetic.main.activity_caso.txtSentencia
 import kotlinx.android.synthetic.main.activity_cliente.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -81,10 +80,10 @@ class CasoActivity : AppCompatActivity() {
         val casoInfo = CasoDataCollectionItem(
             idcaso = 0,
             tipocaso = txtIdCai.text.toString(),
-            sentenciacaso = txtRangoInicial.text.toString(),
+            sentenciacaso = txtSentencia.text.toString(),
             idcliente = 0,
             idservicio = 0,
-            estadocaso = txtFechaLimite.text.toString()
+            estadocaso = txtEstadoCaso.text.toString()
         )
         addCaso(casoInfo) {
             if (it?.idcaso != null) {
@@ -176,10 +175,10 @@ class CasoActivity : AppCompatActivity() {
         val casoInfo = CasoDataCollectionItem(
             idcaso = 0,
             tipocaso = txtIdCai.text.toString(),
-            sentenciacaso = txtRangoInicial.text.toString(),
+            sentenciacaso = txtSentencia.text.toString(),
             idcliente = 0,
             idservicio = 0,
-            estadocaso = txtFechaLimite.text.toString()
+            estadocaso = txtEstadoCaso.text.toString()
 
 
         )
@@ -260,33 +259,34 @@ class CasoActivity : AppCompatActivity() {
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     private fun noLoSuficienteLargo(): Boolean {
 
-        if (txtCai.text.toString().length != 15) {
-            txtRangoInicial.error =
-                "El id del caso no puede ser distinto a 13 dígitos, no olvide ingresar los guiones"
+        if (txtIdCaso.text.toString().length <10) {
+            txtIdCaso.error =
+                "El id del caso no puede ser menor 10, no olvide ingresar los guiones"
             return true
         }
-        if (txtIdCai.text.toString().length < 3) {
-            txtRangoFinal.error = "El tipo de caso no puede ser menor a 3 caracteres"
+        if (txtTipoCaso.text.toString().length < 3) {
+            txtTipoCaso.error = "El tipo de caso no puede ser menor a 3 caracteres"
             return true
         }
-        if (txtRangoInicial.text.toString().length < 3) {
-            txtIdServicio.error = "La sentencia no debe ser menor a 3 caracteres"
+        if (txtSentencia.text.toString().length >25) {
+            txtSentencia.error = "La sentencia no debe ser mayor a 25 caracteres"
             return true
         }
-        if (txtRangoFinal.text.toString().length != 15) {
+        if (txtIdCliente.text.toString().length <8) {
+            txtIdCliente.error =
+                "El id del cliente no puede ser menor a 8 "
+            return true
+        }
+        if (txtIdServicio.text.toString().length < 8) {
             txtIdServicio.error =
-                "El id del cliente no puede ser distinto a 13 digitos, no olvide ingresar los guiones"
+                "El id del servicio no puede ser menor a 8, no olvide ingresar los guiones"
             return true
         }
-        if (txtIdServicio.text.toString().length < 15) {
-            txtFechaLimite.error =
-                "El id del servicio no puede ser distinto a 13 digitos, no olvide ingresar los guiones"
-            return true
-        }
-        if (txtFechaLimite.text.toString().length < 3) {
-            txtFechaLimite.error = "El estado del caso no puede ser menor a 3 caracteres"
+        if (txtEstadoCaso.text.toString().length < 1) {
+            txtEstadoCaso.error = "El estado del caso no puede ser menor a 1 caracteres"
             return true
         }
 
@@ -294,27 +294,27 @@ class CasoActivity : AppCompatActivity() {
     }
 
     private fun estaVacio(): Boolean {
-        if (txtCai.text.toString().isEmpty()) {
-            txtCai.error = "Debe rellenar el id del caso"
+        if (txtIdCaso.text.toString().isEmpty()) {
+            txtIdCaso.error = "Debe rellenar el id del caso"
             return true
         } else if (txtIdCai.text.toString().isEmpty()) {
             txtIdCai.error = "Debe rellenar el tipo de caso"
             return true
         }
-        if (txtRangoInicial.text.toString().isEmpty()) {
-            txtRangoInicial.error = "Debe rellenar la sentencia"
+        if (txtSentencia.text.toString().isEmpty()) {
+            txtSentencia.error = "Debe rellenar la sentencia"
             return true
         }
-        if (txtRangoFinal.text.toString().isEmpty()) {
-            txtRangoFinal.error = "Debe rellenar el id del cliente"
+        if (txtIdCliente.text.toString().isEmpty()) {
+            txtIdCliente.error = "Debe rellenar el id del cliente"
             return true
         }
         if (txtIdServicio.text.toString().isEmpty()) {
             txtIdServicio.error = "Debe rellenar el id del servicio"
             return true
         }
-        if (txtFechaLimite.text.toString().isEmpty()) {
-            txtFechaLimite.error = "Debe rellenar el estado del caso"
+        if (txtEstadoCaso.text.toString().isEmpty()) {
+            txtEstadoCaso.error = "Debe rellenar el estado del caso"
             return true
         }
         return false
