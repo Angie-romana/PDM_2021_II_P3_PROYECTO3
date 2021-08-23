@@ -58,11 +58,9 @@ class CasoActivity : AppCompatActivity() {
                             .get(i).estadocaso + "|"
                     )
                     val arrayAdapter: ArrayAdapter<*>
-                    arrayAdapter =
-                        ArrayAdapter(this@CasoActivity, android.R.layout.simple_list_item_1, array)
-                    // lvwCaso.adapter = arrayAdapter
+                    arrayAdapter = ArrayAdapter(this@CasoActivity, android.R.layout.simple_list_item_1, array)
+                    lvwCaso.adapter = arrayAdapter
                 }
-
             }
         })
     }

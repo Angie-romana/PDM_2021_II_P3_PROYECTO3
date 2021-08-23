@@ -134,7 +134,7 @@
         android:layout_marginTop="144dp"
         android:layout_marginEnd="39dp"
         android:layout_marginBottom="37dp"
-        android:text="Expediente"
+        android:text="CAI"
         android:textColor="@color/white"
         android:textSize="6sp"
         app:layout_constraintBottom_toTopOf="@+id/btnCasoEmpleado"

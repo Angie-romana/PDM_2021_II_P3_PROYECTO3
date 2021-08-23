@@ -35,15 +35,15 @@
         android:layout_marginBottom="35dp"
         android:clickable="true"
         android:saveEnabled="false"
-        app:layout_constraintBottom_toTopOf="@+id/spnIdServicio"
+        app:layout_constraintBottom_toTopOf="@+id/spnIdEmpleado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnIdServicio"
+        app:layout_constraintTop_toBottomOf="@+id/spnIdEmpleado"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <Spinner
-        android:id="@+id/spnIdServicio"
+        android:id="@+id/spnIdEmpleado"
         android:layout_width="262dp"
         android:layout_height="55dp"
         android:layout_marginStart="65dp"
@@ -53,7 +53,7 @@
         android:saveEnabled="false"
         app:layout_constraintBottom_toTopOf="@+id/txtFechaInicioT"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnIdCaso"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />

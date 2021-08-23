@@ -24,7 +24,7 @@ class PrincipalActivity : AppCompatActivity() {
             startActivity(intent) }
         btnCasoEmpleado.setOnClickListener {  val intent = Intent(this,CasoEmpleadoActivity::class.java)
             startActivity(intent) }
-        btnIndicio.setOnClickListener {  val intent = Intent(this,indicioActivity::class.java)
+        btnIndicio.setOnClickListener {  val intent = Intent(this,IndicioActivity::class.java)
             startActivity(intent) }
         btnCobro.setOnClickListener {
             val intent = Intent(this,CobroActivity::class.java)
@@ -39,7 +39,7 @@ class PrincipalActivity : AppCompatActivity() {
             startActivity(intent) }
         btnSucursal.setOnClickListener {  val intent = Intent(this,SucursalActivity::class.java)
             startActivity(intent) }
-        btnExpediente.setOnClickListener {  val intent = Intent(this,ExpedienteActivity::class.java)
+        btnExpediente.setOnClickListener {  val intent = Intent(this,CaiActivity::class.java)
             startActivity(intent) }
     }
 }

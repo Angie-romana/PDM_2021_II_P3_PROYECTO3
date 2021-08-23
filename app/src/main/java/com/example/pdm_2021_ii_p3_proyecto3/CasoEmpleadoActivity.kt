@@ -35,6 +35,7 @@ class CasoEmpleadoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_caso_empleado)
+        callServiceGetCaso()
         callServiceGetCasoEmpleado()
         callServiceGetServicio()
         btnGuardarCasoEmpleado.setOnClickListener { v -> callServicePostCasoEmpleado() }
@@ -69,7 +70,7 @@ private fun callServiceGetServicio()
     })
 }
     private fun callServiceGetCasoEmpleado() {
-      /*  val casoempleadoService: CasoEmpleadoService =
+        val casoempleadoService: CasoEmpleadoService =
             RestEngine.buildService().create(CasoEmpleadoService::class.java)
         var result: Call<List<CasoEmpleadoDataCollectionItem>> =
             casoempleadoService.listCasoEmpleado()
@@ -84,12 +85,14 @@ private fun callServiceGetServicio()
                 response: Response<List<CasoEmpleadoDataCollectionItem>>
             ) {
                 array.add("Todos los casos")
-                array.add("Id caso|Fecha Inicio|Fecha final")
+                array.add("ID|ID Empleado|ID Caso|Fecha Inicio|Fecha Final|Descripcion")
                 for (i in 0..(response.body()!!.size - 1)) {
                     array.add(
-                        response.body()!!.get(i).idcaso.toString() + "|" + response.body()!!
+                        response.body()!!.get(i).idcasoempleado.toString() + "|" +response.body()!!.get(i).idempleado.toString()+ "|"
+                                +response.body()!!.get(i).idcaso.toString() +"|"+ response.body()!!
                             .get(i).fechainiciotrabajoencaso + "|"
                                 + response.body()!!.get(i).fechafinaltrabajoencaso + "|"
+                            + response.body()!!.get(i).descripcioncasoempleado
                     )
                     val arrayAdapter: ArrayAdapter<*>
                     arrayAdapter = ArrayAdapter(
@@ -101,9 +104,11 @@ private fun callServiceGetServicio()
                 }
 
             }
-        })*/
+        })
+    }
 
 
+        private fun callServiceGetCaso() {
         val casoService: CasoService = RestEngine.buildService().create(CasoService::class.java)
         var result: Call<List<CasoDataCollectionItem>> = casoService.listCaso()
 
@@ -123,8 +128,6 @@ private fun callServiceGetServicio()
                     arrayAdapter = ArrayAdapter(this@CasoEmpleadoActivity,android.R.layout.simple_list_item_1,servicioElegir)
                     spnIdCaso.adapter = arrayAdapter
                 }
-
-
 
             }
         })
@@ -188,11 +191,11 @@ private fun callServiceGetServicio()
         )
     }
 
-
     private fun estaVacio():Boolean{
-        if(txtCai.text.toString().isEmpty()) {
-            txtCai.error ="Debe rellenar el id del caso"
-            return true
+        if(spnIdCaso.selectedItem.equals("Seleccione el id del caso")) {
+            Toast.makeText(this, "Debe seleccionar un id caso", Toast.LENGTH_LONG)
+                .show()
+
         }else if(txtFechaInicioT.text.toString().isEmpty()){
             txtFechaInicioT.error = "Debe rellenar la fecha"
             return true
@@ -206,10 +209,7 @@ private fun callServiceGetServicio()
     }
 
     private fun noLoSuficienteLargo():Boolean{
-        if(txtCai.text.toString().length != 15) {
-            txtCai.error ="El id del caso no puede ser distinto a 13 dígitos, no olvide ingresar los guiones"
-            return true
-        }else if(txtFechaInicioT.text.toString().length < 3){
+        if(txtFechaInicioT.text.toString().length < 3){
             txtFechaInicioT.error = "La fecha no puede ser menor a 3 caracteres"
             return true
         }

@@ -128,7 +128,7 @@ class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         }
 
         private fun irIndicio(itemView: View) {
-            val intent = Intent(itemView.context, indicioActivity::class.java)
+            val intent = Intent(itemView.context, IndicioActivity::class.java)
             itemView.context.startActivity(intent)
         }
 

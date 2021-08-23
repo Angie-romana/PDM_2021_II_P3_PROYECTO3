@@ -55,8 +55,7 @@ class CaiActivity : AppCompatActivity() {
                             + response.body()!!.get(i).fechalimite )
                     val arrayAdapter: ArrayAdapter<*>
                     arrayAdapter = ArrayAdapter(this@CaiActivity,android.R.layout.simple_list_item_1,array)
-
-                    //lvwCai.Adapter = arrayAdapter
+                    lvwCai.adapter = arrayAdapter
                 }
 
             }
