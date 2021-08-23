@@ -78,11 +78,11 @@ class CasoActivity : AppCompatActivity() {
     private fun callServicePostCaso() {
 
         val casoInfo = CasoDataCollectionItem(
-            idcaso = 0,
+            idcaso = 0 ,
             tipocaso = txtIdCai.text.toString(),
             sentenciacaso = txtSentencia.text.toString(),
-            idcliente = 0,
-            idservicio = 0,
+            idcliente = txtIdCliente.text.toString().substring(0,1).toLong(),
+            idservicio = txtIdServicio.text.toString().substring(0,1).toLong(),
             estadocaso = txtEstadoCaso.text.toString()
         )
         addCaso(casoInfo) {
@@ -173,11 +173,11 @@ class CasoActivity : AppCompatActivity() {
     private fun callServicePutCaso(idCaso: Long) {
 
         val casoInfo = CasoDataCollectionItem(
-            idcaso = 0,
+            idcaso = txtIdCaso.text.toString().substring(0,1).toLong(),
             tipocaso = txtIdCai.text.toString(),
             sentenciacaso = txtSentencia.text.toString(),
-            idcliente = 0,
-            idservicio = 0,
+            idcliente = txtIdCliente.text.toString().substring(0,1).toLong(),
+            idservicio = txtIdServicio.text.toString().substring(0,1).toLong(),
             estadocaso = txtEstadoCaso.text.toString()
 
 
