@@ -6,40 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.PDM_2021_II_P3_PROYECTO3.AppBarOverlay">
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toollbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:id="@+id/backdrop"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:fitsSystemWindows="true"
-                app:layout_collapseMode="parallax"
-              />
+  <com.google.android.material.appbar.AppBarLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:theme="@style/Theme.PDM_2021_II_P3_PROYECTO3.AppBarOverlay">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/Theme.PDM_2021_II_P3_PROYECTO3.PopupOverlay" />
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-    android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+      <com.google.android.material.appbar.CollapsingToolbarLayout
+          android:id="@+id/collapsing_toollbar"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:layout_scrollFlags="scroll|exitUntilCollapsed"
+          android:fitsSystemWindows="true"
+          app:contentScrim="?attr/colorPrimary"
+          app:expandedTitleMarginStart="48dp"
+          app:expandedTitleMarginEnd="64dp">
+
+        <ImageView
+              android:id="@+id/backdrop"
+              android:layout_width="match_parent"
+              android:layout_height="200dp"
+              android:scaleType="centerCrop"
+              android:fitsSystemWindows="true"
+              app:layout_collapseMode="parallax"
+            android:src="@drawable/cent1"/>
+
+          <androidx.appcompat.widget.Toolbar
+              android:id="@+id/toolbar"
+              android:layout_width="match_parent"
+              android:layout_height="?attr/actionBarSize"
+              android:background="?attr/colorPrimary"
+              app:layout_collapseMode="pin"
+              app:layout_scrolFlags="scroll|enterAlways"
+              app:popupTheme="@style/Theme.PDM_2021_II_P3_PROYECTO3.PopupOverlay"/>
 
 
+      </com.google.android.material.appbar.CollapsingToolbarLayout>
 
+  </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />
 

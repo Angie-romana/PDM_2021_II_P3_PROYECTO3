@@ -11,3 +11,4 @@ data class CasoDataCollectionItem(
     val idservicio: Long,
     val estadocaso: String
 )
+//

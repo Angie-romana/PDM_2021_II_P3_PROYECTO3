@@ -2,8 +2,11 @@ package com.example.pdm_2021_ii_p3_proyecto3
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.CaiDataCollectionItem
 import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.RestApiError
 import com.example.pdm_2021_ii_p3_proyecto3.Service.CaiService
@@ -13,60 +16,192 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_audiencia_detalle.*
 import kotlinx.android.synthetic.main.activity_cai.*
 import kotlinx.android.synthetic.main.activity_cai.view.*
+import kotlinx.android.synthetic.main.activity_cliente.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
 import java.util.*
 
 class CaiActivity : AppCompatActivity() {
+    var array = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cai2)
-        val botonGetId = findViewById<Button>(R.id.btnGetIdC)
-        botonGetId.setOnClickListener {v -> callServiceGetCai()}
-        val botonConsumir = findViewById<Button>(R.id.btnGetAllC)
-        botonConsumir.setOnClickListener {v -> callServiceGetCais()}
-        val botonPostear = findViewById<Button>(R.id.btnPostearC)
-        botonPostear.setOnClickListener { v-> callServicePostCai()}
-        val botonPut = findViewById<Button>(R.id.btnPutC)
-        botonPut.setOnClickListener { v-> callServicePutCai()}
-        val botonDelete = findViewById<Button>(R.id.btnDeleteC)
-        botonDelete.setOnClickListener { v-> callServiceDeleteCai()}
+        setContentView(R.layout.activity_cai)
+        callServiceGetCais()
+        btnGuardarCAI.setOnClickListener { v-> callServicePostCai() }
+        btnActualizarCAI.setOnClickListener { v -> actualizarCai(v) }
+        btnBorrarCAI.setOnClickListener { v-> borrarCai(v) }
     }
 
-    private fun callServiceDeleteCai() {
+    private fun callServiceGetCais() {
         val caiService: CaiService = RestEngine.buildService().create(CaiService::class.java)
-        var result: Call<ResponseBody> = caiService.deleteCai(txtCAI)
+        var result: Call<List<CaiDataCollectionItem>> = caiService.listCai()
 
-        result.enqueue(object : Callback<ResponseBody> {
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+        result.enqueue(object : Callback<List<CaiDataCollectionItem>> {
+            override fun onFailure(call: Call<List<CaiDataCollectionItem>>, t: Throwable) {
                 Toast.makeText(this@CaiActivity,"Error", Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(
-                call: Call<ResponseBody>,
-                response: Response<ResponseBody>
+                call: Call<List<CaiDataCollectionItem>>,
+                response: Response<List<CaiDataCollectionItem>>
             ) {
-                if (response.isSuccessful) {
-                    Toast.makeText(this@CaiActivity,"DELETE", Toast.LENGTH_LONG).show()
+                array.add("Todos los cai")
+                array.add("Id cai|Cai|Rango inicial|Rango final|Fecha limite")
+                for(i in 0..(response.body()!!.size-1)){
+                    array.add(response.body()!!.get(i).idcai.toString() + "|" + response.body()!!.get(i).cai + "|"
+                            + response.body()!!.get(i).rangoinicial + "|" + response.body()!!.get(i).rangofinal + "|"
+                            + response.body()!!.get(i).fechalimite )
+                    val arrayAdapter: ArrayAdapter<*>
+                    arrayAdapter = ArrayAdapter(this@CaiActivity,android.R.layout.simple_list_item_1,array)
+
+                    //lvwCai.Adapter = arrayAdapter
                 }
-                else if (response.code() == 401){
-                    Toast.makeText(this@CaiActivity,"Sesion expirada", Toast.LENGTH_LONG).show()
-                }
-                else{
-                    Toast.makeText(this@CaiActivity,"Fallo al traer el item", Toast.LENGTH_LONG).show()
-                }
+
             }
         })
     }
-    private fun callServicePutCai() {
-        val fecha = "2021-04-11"
+
+    private fun callServicePostCai() {
+
         val caiInfo = CaiDataCollectionItem(
             idcai = 0,
-            cai = txtCAI.text.toString(),
-            rangoinicial = txtRangoIni.text.toString(),
+            cai = txtCai.text.toString(),
+            rangoinicial = txtRangoInicial.text.toString(),
+            rangofinal = txtRangoFinal.text.toString(),
+            fechalimite = txtFechaLimite.text.toString()
+
+        )
+        addCai(caiInfo) {
+            if (it?.idcai != null) {
+                callServiceGetCais()
+                Toast.makeText(this,"OK", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this,"Error", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+    fun addCai(caiData: CaiDataCollectionItem, onResult: (CaiDataCollectionItem?) -> Unit){
+        if(estaVacio()){
+            return
+        }
+        if(noLoSuficienteLargo()){
+            return
+        }
+        val retrofit = RestEngine.buildService().create(CaiService::class.java)
+        var result: Call<CaiDataCollectionItem> = retrofit.addCai(caiData)
+        result.enqueue(object : Callback<CaiDataCollectionItem> {
+            override fun onFailure(call: Call<CaiDataCollectionItem>, t: Throwable) {
+                onResult(null)
+            }
+
+            override fun onResponse(call: Call<CaiDataCollectionItem>,
+                                    response: Response<CaiDataCollectionItem>
+            ) {
+                if (response.isSuccessful) {
+                    val addedCai = response.body()!!
+                    onResult(addedCai)
+                }
+                /*else if (response.code() == 401){
+                    Toast.makeText(this@MainActivity,"Sesion expirada",Toast.LENGTH_LONG).show()
+                }*/
+                else if (response.code() == 500){
+                    //val gson = Gson()
+                    //val type = object : TypeToken<RestApiError>() {}.type
+                    //var errorResponse1: RestApiError? = gson.fromJson(response.errorBody()!!.charStream(), type)
+                    val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
+
+
+                    Toast.makeText(this@CaiActivity,errorResponse.errorDetails,Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this@CaiActivity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
+                }
+            }
+
+        }
+        )
+    }
+
+    private fun estaVacio():Boolean{
+        /*if(txtIdCAI.text.toString().isEmpty()) {
+            txtIdCAI.error ="Debe rellenar el id del cai"
+            return true
+        }else if(txtCAI.text.toString().isEmpty()){
+            txtCAI.error = "Debe rellenar el cai"
+            return true
+        }*/
+        if(txtRangoInicial.text.toString().isEmpty()) {
+            txtRangoInicial.error ="Debe rellenar el rango inicial"
+            return true
+        }
+        if(txtRangoFinal.text.toString().isEmpty()) {
+            txtRangoFinal.error ="Debe rellenar el rango final"
+            return true
+        }
+        if(txtFechaLimite.text.toString().isEmpty()) {
+            txtFechaLimite.error ="Debe rellenar la fecha limite"
+            return true
+        }
+
+        return false
+    }
+//
+    private fun noLoSuficienteLargo():Boolean{
+        if(txtIdCai.text.toString().length != 15) {
+            txtIdCai.error ="El id cai no puede ser distinto a 13 dígitos, no olvide ingresar los guiones"
+            return true
+        }else if(txtCai.text.toString().length < 3){
+            txtCai.error = "El cai no puede ser  menor a 3 caracteres"
+            return true
+        }
+        if(txtRangoInicial.text.toString().length <3) {
+            txtRangoInicial.error ="El rango inicial no puede ser menor a 3 caracteres "
+            return true
+        }
+        if(txtRangoFinal.text.toString().length <3) {
+            txtRangoFinal.error ="El rango final no puede ser menor a 3 caracteres "
+            return true
+        }
+        if(txtFechaLimite.text.toString().length <4) {
+            txtFechaLimite.error ="La fecha limite no puede ser menor a 4 digitos"
+            return true
+        }
+
+        return false
+    }
+    fun actualizarCai(view: View) {
+        if(estaVacio()){
+            return
+        }
+        if(noLoSuficienteLargo()){
+            return
+        }
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        builder.setTitle("Ingrese el Id del cai")
+        builder.setMessage("Por favor ingrese el ID del cai a buscar, en caso de querer verificar nuevamente presione el boton \"Cancelar\"")
+        val dialogLayout = inflater.inflate(R.layout.alert_dialog_cai, null)
+        val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
+        builder.setView(dialogLayout)
+        builder.setPositiveButton("Enviar") { dialogInterface, i ->
+            if(editText.text.toString() == ""){
+                Toast.makeText(this, "No puede dejar el ID vacío", Toast.LENGTH_SHORT).show()
+                return@setPositiveButton
+            }
+            callServicePutCai(editText.text.toString().toLong())
+        }
+        builder.setNegativeButton("Cancelar"){dialogInterface, i -> return@setNegativeButton}
+        builder.show()
+    }
+
+    private fun callServicePutCai(idCai:Long) {
+
+        val caiInfo = CaiDataCollectionItem(
+            idcai = 0,
+            cai = txtCai.text.toString(),
+            rangoinicial = txtRangoInicial.text.toString(),
             rangofinal = txtRangoFinal.text.toString(),
             fechalimite = txtFechaLimite.text.toString()
 
@@ -74,16 +209,17 @@ class CaiActivity : AppCompatActivity() {
 
         val retrofit = RestEngine.buildService().create(CaiService::class.java)
         var result: Call<CaiDataCollectionItem> = retrofit.updateCai(caiInfo)
-
+        callServiceGetCais()
         result.enqueue(object : Callback<CaiDataCollectionItem> {
             override fun onFailure(call: Call<CaiDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@CaiActivity,"Error",Toast.LENGTH_LONG).show()
+
             }
 
             override fun onResponse(call: Call<CaiDataCollectionItem>,
                                     response: Response<CaiDataCollectionItem>) {
                 if (response.isSuccessful) {
-                    val updatedCai = response.body()!!
+                    callServiceGetCais()
+                    val updatedPerson = response.body()!!
                     Toast.makeText(this@CaiActivity,"OK"+response.body()!!.cai,Toast.LENGTH_LONG).show()
                 }
                 else if (response.code() == 401){
@@ -97,89 +233,48 @@ class CaiActivity : AppCompatActivity() {
         })
     }
 
-    private fun callServiceGetCai() {
-        val caiService: CaiService = RestEngine.buildService().create(CaiService::class.java)
-        var result: Call<CaiDataCollectionItem> = caiService.getCaiById(txtIdCAI)
-
-        result.enqueue(object :  Callback<CaiDataCollectionItem> {
-            override fun onFailure(call: Call<CaiDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@CaiActivity,"Error",Toast.LENGTH_LONG).show()
+    fun borrarCai(view:View){
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        builder.setTitle("Ingrese el Id del cai")
+        builder.setMessage("Por favor ingrese el ID del cai a buscar, en caso de querer verificar nuevamente presione el boton \"Cancelar\"")
+        val dialogLayout = inflater.inflate(R.layout.alert_dialog_cai, null)
+        val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
+        builder.setView(dialogLayout)
+        builder.setPositiveButton("Enviar") { dialogInterface, i ->
+            if(editText.text.toString() == ""){
+                Toast.makeText(this, "No puede dejar el ID vacío", Toast.LENGTH_SHORT).show()
+                return@setPositiveButton
             }
-
-            override fun onResponse(
-                call: Call<CaiDataCollectionItem>,
-                response: Response<CaiDataCollectionItem>
-            ) {
-                Toast.makeText(this@CaiActivity,"OK"+response.body()!!.cai,Toast.LENGTH_LONG).show()
-            }
-        })
-    }
-    private fun callServicePostCai() {
-        val fecha = "2021-04-10"
-        val caiInfo = CaiDataCollectionItem(
-            idcai = 0,
-            cai = txtCAI.text.toString(),
-            rangoinicial = txtRangoIni.text.toString(),
-            rangofinal = txtRangoFinal.text.toString(),
-            fechalimite = txtFechaLimite.text.toString()
-
-        )
-        addCai(caiInfo) {
-            if (it?.cai!= null) {
-                Toast.makeText(this@CaiActivity,"OK"+it?.cai,Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(this@CaiActivity,"Error",Toast.LENGTH_LONG).show()
-            }
+            callServiceDeleteCai(editText.text.toString().toLong())
         }
+        builder.setNegativeButton("Cancelar"){dialogInterface, i -> return@setNegativeButton}
+        builder.show()
     }
-    private fun callServiceGetCais() {
-        val CaiService: CaiService = RestEngine.buildService().create(CaiService::class.java)
-        var result: Call<List<CaiDataCollectionItem>> = CaiService.listCai()
 
-        result.enqueue(object :  Callback<List<CaiDataCollectionItem>> {
-            override fun onFailure(call: Call<List<CaiDataCollectionItem>>, t: Throwable) {
+    private fun callServiceDeleteCai(idCai: Long) {
+        val caiService:CaiService = RestEngine.buildService().create(CaiService::class.java)
+        var result: Call<ResponseBody> = caiService.deleteCai(idCai)
+
+        result.enqueue(object :  Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Toast.makeText(this@CaiActivity,"Error",Toast.LENGTH_LONG).show()
             }
-
             override fun onResponse(
-                call: Call<List<CaiDataCollectionItem>>,
-                response: Response<List<CaiDataCollectionItem>>
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
             ) {
-                Toast.makeText(this@CaiActivity,"OK"+response.body()!!.get(0).cai,Toast.LENGTH_LONG).show()
-            }
-        })
-    }
-    fun addCai(caiData: CaiDataCollectionItem, onResult: (CaiDataCollectionItem?) -> Unit){
-        val retrofit = RestEngine.buildService().create(CaiService::class.java)
-        var result: Call<CaiDataCollectionItem> = retrofit.addCai(caiData)
-
-        result.enqueue(object : Callback<CaiDataCollectionItem> {
-            override fun onFailure(call: Call<CaiDataCollectionItem>, t: Throwable) {
-                onResult(null)
-            }
-
-            override fun onResponse(call: Call<CaiDataCollectionItem>,
-                                    response: Response<CaiDataCollectionItem>) {
                 if (response.isSuccessful) {
-                    val addedCai = response.body()!!
-                    onResult(addedCai)
+                    Toast.makeText(this@CaiActivity,"DELETE",Toast.LENGTH_LONG).show()
                 }
-
-                else if (response.code() == 500){
-
-                    val errorResponse = Gson().fromJson(response.errorBody()!!.string()!!, RestApiError::class.java)
-
-                    Toast.makeText(this@CaiActivity,errorResponse.errorDetails,Toast.LENGTH_LONG).show()
+                else if (response.code() == 401){
+                    Toast.makeText(this@CaiActivity,"Sesion expirada",Toast.LENGTH_LONG).show()
                 }
                 else{
                     Toast.makeText(this@CaiActivity,"Fallo al traer el item",Toast.LENGTH_LONG).show()
                 }
             }
-
-        }
-        )
+        })
     }
-
-    fun String.toDate(locale: Locale = Locale.getDefault()): Date = SimpleDateFormat(format(), locale).parse(this)
 
 }

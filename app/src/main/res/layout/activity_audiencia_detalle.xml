@@ -4,124 +4,157 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo2"
-    tools:context=".AudienciaDetalleActivity">
-
-    <EditText
-        android:id="@+id/txtIdFechaAud"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="224dp"
-        android:ems="10"
-        android:hint="Id de fecha de audiencia"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="@drawable/fondoactivity"
+    android:textAlignment="center"
+    tools:context=".AbogadoActivity">
 
     <TextView
-        android:id="@+id/txvTituloAD"
+        android:id="@+id/txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="407dp"
-        android:text="DETALLE DE AUDIENCIA"
+        android:layout_marginTop="49dp"
+        android:layout_marginBottom="171dp"
+        android:text="Audiencia Detalle"
         android:textColor="@color/white"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtDescripAudie"
+        android:textSize="40sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtIdCaso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Id de caso"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/txtIdFechaAud"
-        app:layout_constraintTop_toBottomOf="@+id/txtIdFechaAud" />
-
-    <EditText
-        android:id="@+id/txtFechaAudiencia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:ems="10"
-        android:hint="Fecha de audiencia"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/txtIdCaso"
-        app:layout_constraintTop_toBottomOf="@+id/txtIdCaso" />
-
-    <EditText
-        android:id="@+id/txtIdJuzgado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:hint="Id de juzgado"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/txtFechaAudiencia"
-        app:layout_constraintTop_toBottomOf="@+id/txtFechaAudiencia" />
-
-    <EditText
-        android:id="@+id/txtDescripAudie"
-        android:layout_width="238dp"
+    <ScrollView
+        android:id="@+id/scrollViewAudiencia"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="151dp"
-        android:ems="10"
-        android:hint="Descripcion de audiencia"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvTituloAD" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btnGuardarAudi"
-        android:layout_width="53dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="49dp"
-        android:background="@drawable/guardar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnActualizar"
-        app:layout_constraintEnd_toStartOf="@+id/btnActualizar"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnActualizar"
-        android:layout_width="53dp"
-        android:layout_height="57dp"
-        android:layout_marginEnd="173dp"
-        android:layout_marginBottom="52dp"
-        android:background="@drawable/actualizar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnGuardarAudi"
-        tools:ignore="SpeakableTextPresentCheck" />
+            <EditText
+                android:id="@+id/txtFechaAudiencia"
+                android:layout_width="248dp"
+                android:layout_height="52dp"
+                android:layout_marginBottom="21dp"
+                android:ems="10"
+                android:hint="Fecha Audiencia"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/txtIdJuzgado"
+                app:layout_constraintStart_toStartOf="@+id/txtIdcaso"
+                app:layout_constraintTop_toBottomOf="@+id/txtIdcaso"
+                tools:ignore="TextContrastCheck" />
 
-    <Button
-        android:id="@+id/btnEliminarAudi"
-        android:layout_width="53dp"
-        android:layout_height="57dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/eliminar"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+            <EditText
+                android:id="@+id/txtIdcaso"
+                android:layout_width="251dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="86dp"
+                android:layout_marginTop="256dp"
+                android:layout_marginEnd="86dp"
+                android:layout_marginBottom="26dp"
+                android:ems="10"
+                android:hint="Id caso"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/txtFechaAudiencia"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/lstAudiencia"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
 
+            <EditText
+                android:id="@+id/txtDescripAudie"
+                android:layout_width="247dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="26dp"
+                android:ems="10"
+
+                android:hint="Descripcion"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/btnEliminarAudiencia"
+                app:layout_constraintStart_toStartOf="@+id/txtIdJuzgado"
+                app:layout_constraintTop_toBottomOf="@+id/txtIdJuzgado"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/txtIdJuzgado"
+                android:layout_width="247dp"
+                android:layout_height="54dp"
+                android:layout_marginBottom="26dp"
+                android:ems="10"
+
+                android:hint="Id juzgado"
+                android:inputType="number"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/txtDescripAudie"
+                app:layout_constraintStart_toStartOf="@+id/txtFechaAudiencia"
+                app:layout_constraintTop_toBottomOf="@+id/txtFechaAudiencia"
+                tools:ignore="TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck" />
+
+            <Button
+                android:id="@+id/btnEliminarAudiencia"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="31dp"
+                android:background="@drawable/eliminar"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btnActualizarAudiencia"
+                app:layout_constraintBottom_toTopOf="@+id/btnActualizarAudiencia"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnActualizarAudiencia"
+                app:layout_constraintTop_toBottomOf="@+id/txtDescripAudie"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnActualizarAudiencia"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="85dp"
+                android:layout_marginBottom="36dp"
+                android:background="@drawable/actualizar"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBottom_toTopOf="@+id/lstAudiencia"
+                app:layout_constraintEnd_toStartOf="@+id/btnEliminarAudiencia"
+                app:layout_constraintStart_toEndOf="@+id/btnGuardarAudiencia"
+                app:layout_constraintTop_toBottomOf="@+id/btnEliminarAudiencia"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnGuardarAudiencia"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="77dp"
+                android:layout_marginEnd="73dp"
+                android:background="@drawable/guardar"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btnActualizarAudiencia"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnActualizarAudiencia"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.862"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ListView
+                android:id="@+id/lstAudiencia"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnActualizarAudiencia" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+//
 </androidx.constraintlayout.widget.ConstraintLayout>
