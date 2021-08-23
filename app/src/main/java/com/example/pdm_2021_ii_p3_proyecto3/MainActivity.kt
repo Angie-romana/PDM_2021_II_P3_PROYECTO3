@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.EmpleadoDataCollectionItem
 import com.example.pdm_2021_ii_p3_proyecto3.Service.EmpleadoService
 import com.example.pdm_2021_ii_p3_proyecto3.Service.RestEngine
-import com.example.pdm_2021_ii_p3_proyecto3.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_abogado.*
 import kotlinx.android.synthetic.main.activity_main.*
