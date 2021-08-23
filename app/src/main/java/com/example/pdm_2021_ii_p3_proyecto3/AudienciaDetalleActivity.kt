@@ -69,7 +69,7 @@ class AudienciaDetalleActivity : AppCompatActivity() {
         val audienciaInfo = AudienciaDataCollectionItem(
             idcaso = 0, // Este se pone asi porque es automatico
           fechaaudiencia = txtFechaAudiencia.text.toString(),
-            idjuzgado = 0,
+            idjuzgado = txtIdJuzgado.text.toString().substring(0,1).toLong(),
            descripcionaudiencia = txtDescripAudie.text.toString()
 
         )
@@ -193,9 +193,9 @@ class AudienciaDetalleActivity : AppCompatActivity() {
     private fun callServicePutAudiencia(idCaso:Long) {
 
         val audienciaInfo = AudienciaDataCollectionItem(
-            idcaso = 0, // Este se pone asi porque es automatico
+            idcaso = txtIdCaso.text.toString().substring(0,1).toLong(), // Este se pone asi porque es automatico
             fechaaudiencia = txtFechaAudiencia.text.toString(),
-            idjuzgado = 0,
+            idjuzgado = txtIdJuzgado.text.toString().substring(0,1).toLong(),
             descripcionaudiencia = txtDescripAudie.text.toString()
         )
 
