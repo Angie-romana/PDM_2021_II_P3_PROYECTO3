@@ -47,13 +47,19 @@ class CaiActivity : AppCompatActivity() {
                 call: Call<List<CaiDataCollectionItem>>,
                 response: Response<List<CaiDataCollectionItem>>
             ) {
+
+                array.clear()
+                var arrayAdapter: ArrayAdapter<*>
+                arrayAdapter = ArrayAdapter(this@CaiActivity,android.R.layout.simple_list_item_1,array)
+                lvwCai.adapter = arrayAdapter
+
                 array.add("Todos los cai")
                 array.add("Id cai|Cai|Rango inicial|Rango final|Fecha limite")
                 for(i in 0..(response.body()!!.size-1)){
                     array.add(response.body()!!.get(i).idcai.toString() + "|" + response.body()!!.get(i).cai + "|"
                             + response.body()!!.get(i).rangoinicial + "|" + response.body()!!.get(i).rangofinal + "|"
                             + response.body()!!.get(i).fechalimite )
-                    val arrayAdapter: ArrayAdapter<*>
+
                     arrayAdapter = ArrayAdapter(this@CaiActivity,android.R.layout.simple_list_item_1,array)
                     lvwCai.adapter = arrayAdapter
                 }
@@ -148,11 +154,8 @@ class CaiActivity : AppCompatActivity() {
     }
 //
     private fun noLoSuficienteLargo():Boolean{
-        if(txtIdCai.text.toString().length != 15) {
-            txtIdCai.error ="El id cai no puede ser distinto a 13 dígitos, no olvide ingresar los guiones"
-            return true
-        }else if(txtCai.text.toString().length < 3){
-            txtCai.error = "El cai no puede ser  menor a 3 caracteres"
+        if(txtCai.text.toString().length != 37){
+            txtCai.error = "El cai no puede ser  menor a 37 caracteres"
             return true
         }
         if(txtRangoInicial.text.toString().length <3) {

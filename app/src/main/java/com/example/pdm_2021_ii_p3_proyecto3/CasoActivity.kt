@@ -13,7 +13,13 @@ import com.example.pdm_2021_ii_p3_proyecto3.Service.CasoService
 import com.example.pdm_2021_ii_p3_proyecto3.Service.RestEngine
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_audiencia_detalle.*
+import kotlinx.android.synthetic.main.activity_cai.*
 import kotlinx.android.synthetic.main.activity_caso.*
+import kotlinx.android.synthetic.main.activity_caso.txtCai
+import kotlinx.android.synthetic.main.activity_caso.txtFechaLimite
+import kotlinx.android.synthetic.main.activity_caso.txtIdCai
+import kotlinx.android.synthetic.main.activity_caso.txtRangoFinal
+import kotlinx.android.synthetic.main.activity_caso.txtRangoInicial
 import kotlinx.android.synthetic.main.activity_cliente.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -46,6 +52,11 @@ class CasoActivity : AppCompatActivity() {
                 call: Call<List<CasoDataCollectionItem>>,
                 response: Response<List<CasoDataCollectionItem>>
             ) {
+                array.clear()
+                var arrayAdapter: ArrayAdapter<*>
+                arrayAdapter = ArrayAdapter(this@CasoActivity,android.R.layout.simple_list_item_1,array)
+                lvwCaso.adapter = arrayAdapter
+
                 array.add("Todos los casos")
                 array.add("Id caso|Tipo de caso|Sentencia|Id cliente|Id servicio|Estado caso")
                 for (i in 0..(response.body()!!.size - 1)) {

@@ -11,6 +11,7 @@ import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.*
 import com.example.pdm_2021_ii_p3_proyecto3.Service.*
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_audiencia_detalle.*
+import kotlinx.android.synthetic.main.activity_cai.*
 import kotlinx.android.synthetic.main.activity_caso.*
 import kotlinx.android.synthetic.main.activity_caso_empleado.*
 import kotlinx.android.synthetic.main.activity_cobro.*
@@ -77,6 +78,11 @@ private fun callServiceGetEmpleado()
                 call: Call<List<CasoEmpleadoDataCollectionItem>>,
                 response: Response<List<CasoEmpleadoDataCollectionItem>>
             ) {
+
+                array.clear()
+                var arrayAdapter: ArrayAdapter<*>
+                arrayAdapter = ArrayAdapter(this@CasoEmpleadoActivity,android.R.layout.simple_list_item_1,array)
+                lvwCasoEmpleado.adapter = arrayAdapter
                 array.add("Todos los casos")
                 array.add("ID|ID Empleado|ID Caso|Fecha Inicio|Fecha Final|Descripcion")
                 for (i in 0..(response.body()!!.size - 1)) {
@@ -126,7 +132,12 @@ private fun callServiceGetEmpleado()
         })
     }
         private fun callServicePostCasoEmpleado() {
-
+            if(estaVacio()){
+                return
+            }
+            if(noLoSuficienteLargo()){
+                return
+            }
             val casoempleadoInfo = CasoEmpleadoDataCollectionItem(
                 idcaso = 0, // Este se pone asi porque es automatico
               fechafinaltrabajoencaso = txtFechaFinalT.text.toString(),

@@ -13,6 +13,7 @@ import com.example.pdm_2021_ii_p3_proyecto3.Service.AudienciaService
 import com.example.pdm_2021_ii_p3_proyecto3.Service.RestEngine
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_audiencia_detalle.*
+import kotlinx.android.synthetic.main.activity_cai.*
 import kotlinx.android.synthetic.main.activity_cliente.*
 import okhttp3.ResponseBody
 
@@ -45,6 +46,11 @@ class AudienciaDetalleActivity : AppCompatActivity() {
                 call: Call<List<AudienciaDataCollectionItem>>,
                 response: Response<List<AudienciaDataCollectionItem>>
             ) {
+                array.clear()
+                var arrayAdapter: ArrayAdapter<*>
+                arrayAdapter = ArrayAdapter(this@AudienciaDetalleActivity,android.R.layout.simple_list_item_1,array)
+                lstAudiencia.adapter = arrayAdapter
+
                 array.add("Todas las audiencias")
                 array.add("Id caso|Fecha|Id juzgado|Descripcion")
                 for(i in 0..(response.body()!!.size-1)){
