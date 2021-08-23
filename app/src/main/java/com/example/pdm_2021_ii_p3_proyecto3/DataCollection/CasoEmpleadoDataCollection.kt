@@ -4,9 +4,9 @@ import kotlin.collections.ArrayList
 
 class CasoEmpleadoDataCollection : ArrayList<CasoEmpleadoDataCollectionItem>()
 data class CasoEmpleadoDataCollectionItem(
-    val idcasoempleado : Long,
+    val idcasoempleado: Long,
     val idempleado:Long,
-    val idcaso:Long,
+    val idcaso: Long,
     val fechainiciotrabajoencaso: String,
     val fechafinaltrabajoencaso: String,
     val descripcioncasoempleado: String

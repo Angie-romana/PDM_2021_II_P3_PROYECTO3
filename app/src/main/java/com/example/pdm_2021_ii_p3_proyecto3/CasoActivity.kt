@@ -69,11 +69,11 @@ class CasoActivity : AppCompatActivity() {
 
         val casoInfo = CasoDataCollectionItem(
             idcaso = 0,
-            tipocaso = txtTipoCaso.text.toString(),
-            sentenciacaso = txtSentencia.text.toString(),
+            tipocaso = txtIdCai.text.toString(),
+            sentenciacaso = txtRangoInicial.text.toString(),
             idcliente = 0,
             idservicio = 0,
-            estadocaso = txtEstadoCaso.text.toString()
+            estadocaso = txtFechaLimite.text.toString()
         )
         addCaso(casoInfo) {
             if (it?.idcaso != null) {
@@ -164,11 +164,11 @@ class CasoActivity : AppCompatActivity() {
 
         val casoInfo = CasoDataCollectionItem(
             idcaso = 0,
-            tipocaso = txtTipoCaso.text.toString(),
-            sentenciacaso = txtSentencia.text.toString(),
+            tipocaso = txtIdCai.text.toString(),
+            sentenciacaso = txtRangoInicial.text.toString(),
             idcliente = 0,
             idservicio = 0,
-            estadocaso = txtEstadoCaso.text.toString()
+            estadocaso = txtFechaLimite.text.toString()
 
 
         )
@@ -251,31 +251,31 @@ class CasoActivity : AppCompatActivity() {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     private fun noLoSuficienteLargo(): Boolean {
 
-        if (txtIdCaso.text.toString().length != 15) {
-            txtSentencia.error =
+        if (txtCai.text.toString().length != 15) {
+            txtRangoInicial.error =
                 "El id del caso no puede ser distinto a 13 dígitos, no olvide ingresar los guiones"
             return true
         }
-        if (txtTipoCaso.text.toString().length < 3) {
-            txtIdCliente.error = "El tipo de caso no puede ser menor a 3 caracteres"
+        if (txtIdCai.text.toString().length < 3) {
+            txtRangoFinal.error = "El tipo de caso no puede ser menor a 3 caracteres"
             return true
         }
-        if (txtSentencia.text.toString().length < 3) {
+        if (txtRangoInicial.text.toString().length < 3) {
             txtIdServicio.error = "La sentencia no debe ser menor a 3 caracteres"
             return true
         }
-        if (txtIdCliente.text.toString().length != 15) {
+        if (txtRangoFinal.text.toString().length != 15) {
             txtIdServicio.error =
                 "El id del cliente no puede ser distinto a 13 digitos, no olvide ingresar los guiones"
             return true
         }
         if (txtIdServicio.text.toString().length < 15) {
-            txtEstadoCaso.error =
+            txtFechaLimite.error =
                 "El id del servicio no puede ser distinto a 13 digitos, no olvide ingresar los guiones"
             return true
         }
-        if (txtEstadoCaso.text.toString().length < 3) {
-            txtEstadoCaso.error = "El estado del caso no puede ser menor a 3 caracteres"
+        if (txtFechaLimite.text.toString().length < 3) {
+            txtFechaLimite.error = "El estado del caso no puede ser menor a 3 caracteres"
             return true
         }
 
@@ -283,27 +283,27 @@ class CasoActivity : AppCompatActivity() {
     }
 
     private fun estaVacio(): Boolean {
-        if (txtIdCaso.text.toString().isEmpty()) {
-            txtIdCaso.error = "Debe rellenar el id del caso"
+        if (txtCai.text.toString().isEmpty()) {
+            txtCai.error = "Debe rellenar el id del caso"
             return true
-        } else if (txtTipoCaso.text.toString().isEmpty()) {
-            txtTipoCaso.error = "Debe rellenar el tipo de caso"
-            return true
-        }
-        if (txtSentencia.text.toString().isEmpty()) {
-            txtSentencia.error = "Debe rellenar la sentencia"
+        } else if (txtIdCai.text.toString().isEmpty()) {
+            txtIdCai.error = "Debe rellenar el tipo de caso"
             return true
         }
-        if (txtIdCliente.text.toString().isEmpty()) {
-            txtIdCliente.error = "Debe rellenar el id del cliente"
+        if (txtRangoInicial.text.toString().isEmpty()) {
+            txtRangoInicial.error = "Debe rellenar la sentencia"
+            return true
+        }
+        if (txtRangoFinal.text.toString().isEmpty()) {
+            txtRangoFinal.error = "Debe rellenar el id del cliente"
             return true
         }
         if (txtIdServicio.text.toString().isEmpty()) {
             txtIdServicio.error = "Debe rellenar el id del servicio"
             return true
         }
-        if (txtEstadoCaso.text.toString().isEmpty()) {
-            txtEstadoCaso.error = "Debe rellenar el estado del caso"
+        if (txtFechaLimite.text.toString().isEmpty()) {
+            txtFechaLimite.error = "Debe rellenar el estado del caso"
             return true
         }
         return false

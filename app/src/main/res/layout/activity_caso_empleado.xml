@@ -15,85 +15,103 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:layout_marginBottom="185dp"
+        android:layout_marginBottom="31dp"
         android:text="Caso Empleado"
         android:textColor="@color/white"
         android:textSize="40dp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@+id/txtFechaFinalT"
+        app:layout_constraintBottom_toTopOf="@+id/txtIdCasoEmpleado"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Spinner
         android:id="@+id/spnIdCaso"
-        android:layout_width="261dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="35dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="23dp"
         android:clickable="true"
         android:saveEnabled="false"
-        app:layout_constraintBottom_toTopOf="@+id/spnIdEmpleado"
+        app:layout_constraintBottom_toTopOf="@+id/txtDescripCasoE"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnIdEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/txtIdCasoEmpleado"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <Spinner
         android:id="@+id/spnIdEmpleado"
-        android:layout_width="262dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="21dp"
         android:clickable="true"
         android:saveEnabled="false"
-        app:layout_constraintBottom_toTopOf="@+id/txtFechaInicioT"
+        app:layout_constraintBottom_toTopOf="@+id/txtFechaFinalT"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnIdCaso"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripCasoE"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
 
         android:id="@+id/txtFechaFinalT"
-        android:layout_width="293dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="400dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="17dp"
         android:ems="10"
         android:hint="Fecha Final"
         android:inputType="textPersonName"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/txtFechaInicioT"
-        app:layout_constraintTop_toBottomOf="@+id/txv" />
-    //aqui va el primero
+        app:layout_constraintBottom_toTopOf="@+id/txtFechaInicioT"
+        app:layout_constraintEnd_toEndOf="@+id/txtFechaInicioT"
+        app:layout_constraintStart_toStartOf="@+id/spnIdCaso"
+        app:layout_constraintTop_toBottomOf="@+id/spnIdEmpleado" />
+
+    <EditText
+
+        android:id="@+id/txtDescripCasoE"
+        android:layout_width="228dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="Descripcion"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/spnIdEmpleado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spnIdCaso" />
 
     <EditText
         android:id="@+id/txtFechaInicioT"
-        android:layout_width="293dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="62dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="11dp"
         android:ems="10"
         android:hint="Fecha Inicio"
         android:inputType="textPersonName"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/lvwCasoEmpleado"
-        app:layout_constraintStart_toStartOf="@+id/btnGuardarCasoEmpleado"
+        app:layout_constraintBottom_toTopOf="@+id/btnEliminarCasoEmpleado"
+        app:layout_constraintEnd_toEndOf="@+id/lvwCasoEmpleado"
+        app:layout_constraintStart_toStartOf="@+id/spnIdEmpleado"
         app:layout_constraintTop_toBottomOf="@+id/txtFechaFinalT" />
+
+    //
 
     <Button
         android:id="@+id/btnEliminarCasoEmpleado"
         android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="49dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="45dp"
         android:background="@drawable/eliminar"
         android:backgroundTint="@color/purple_700"
+        app:layout_constraintBottom_toTopOf="@+id/btnActualizarCasoEmpleado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnActualizarCasoEmpleado"
         app:layout_constraintTop_toBottomOf="@+id/txtFechaInicioT"
@@ -101,41 +119,54 @@
 
     <Button
         android:id="@+id/btnGuardarCasoEmpleado"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="57dp"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="26dp"
         android:background="@drawable/guardar"
         android:backgroundTint="@color/purple_700"
+        app:layout_constraintBottom_toTopOf="@+id/lvwCasoEmpleado"
         app:layout_constraintEnd_toStartOf="@+id/btnActualizarCasoEmpleado"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFechaInicioT"
         tools:ignore="SpeakableTextPresentCheck" />
-    //
 
     <Button
         android:id="@+id/btnActualizarCasoEmpleado"
         android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="67dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="23dp"
         android:background="@drawable/actualizar"
         android:backgroundTint="@color/purple_700"
+        app:layout_constraintBottom_toTopOf="@+id/lvwCasoEmpleado"
         app:layout_constraintEnd_toStartOf="@+id/btnEliminarCasoEmpleado"
         app:layout_constraintStart_toEndOf="@+id/btnGuardarCasoEmpleado"
-        app:layout_constraintTop_toBottomOf="@+id/txtFechaInicioT"
+        app:layout_constraintTop_toBottomOf="@+id/btnEliminarCasoEmpleado"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ListView
         android:id="@+id/lvwCasoEmpleado"
-        android:layout_width="341dp"
-        android:layout_height="209dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="28dp"
+        android:layout_width="303dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFechaInicioT" />
+        app:layout_constraintEnd_toStartOf="@+id/btnActualizarCasoEmpleado"
+        app:layout_constraintStart_toStartOf="@+id/btnActualizarCasoEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/btnActualizarCasoEmpleado" />
+
+    <EditText
+        android:id="@+id/txtIdCasoEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Id caso empleado"
+        app:layout_constraintBottom_toTopOf="@+id/spnIdCaso"
+        app:layout_constraintStart_toStartOf="@+id/txv"
+        app:layout_constraintTop_toBottomOf="@+id/txv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

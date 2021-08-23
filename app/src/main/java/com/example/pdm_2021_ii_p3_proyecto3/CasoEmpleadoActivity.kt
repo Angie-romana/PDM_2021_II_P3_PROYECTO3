@@ -7,17 +7,10 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.CasoDataCollectionItem
-import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.CasoEmpleadoDataCollectionItem
-import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.RestApiError
-import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.ServicioDataCollectionItem
-import com.example.pdm_2021_ii_p3_proyecto3.Service.CasoEmpleadoService
-import com.example.pdm_2021_ii_p3_proyecto3.Service.CasoService
-import com.example.pdm_2021_ii_p3_proyecto3.Service.RestEngine
-import com.example.pdm_2021_ii_p3_proyecto3.Service.ServicioService
+import com.example.pdm_2021_ii_p3_proyecto3.DataCollection.*
+import com.example.pdm_2021_ii_p3_proyecto3.Service.*
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_audiencia_detalle.*
-import kotlinx.android.synthetic.main.activity_audiencia_detalle.txtIdcaso
 import kotlinx.android.synthetic.main.activity_caso.*
 import kotlinx.android.synthetic.main.activity_caso_empleado.*
 import kotlinx.android.synthetic.main.activity_cobro.*
@@ -37,31 +30,31 @@ class CasoEmpleadoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_caso_empleado)
         callServiceGetCaso()
         callServiceGetCasoEmpleado()
-        callServiceGetServicio()
+        callServiceGetEmpleado()
         btnGuardarCasoEmpleado.setOnClickListener { v -> callServicePostCasoEmpleado() }
         btnActualizarCasoEmpleado.setOnClickListener { v -> actualizarCasoEmpleado(v) }
         btnEliminarCasoEmpleado.setOnClickListener { v -> borrarCasoEmpleado(v) }
     }
-private fun callServiceGetServicio()
+private fun callServiceGetEmpleado()
 {
-    val personService: ServicioService = RestEngine.buildService().create(ServicioService::class.java)
-    var result: Call<List<ServicioDataCollectionItem>> = personService.listServicio()
+    val empleadoService: EmpleadoService = RestEngine.buildService().create(EmpleadoService::class.java)
+    var result: Call<List<EmpleadoDataCollectionItem>> = empleadoService.listEmpleados()
 
-    result.enqueue(object :  Callback<List<ServicioDataCollectionItem>> {
-        override fun onFailure(call: Call<List<ServicioDataCollectionItem>>, t: Throwable) {
+    result.enqueue(object :  Callback<List<EmpleadoDataCollectionItem>> {
+        override fun onFailure(call: Call<List<EmpleadoDataCollectionItem>>, t: Throwable) {
             Toast.makeText(this@CasoEmpleadoActivity,"Error",Toast.LENGTH_LONG).show()
         }
 
         override fun onResponse(
-            call: Call<List<ServicioDataCollectionItem>>,
-            response: Response<List<ServicioDataCollectionItem>>
+            call: Call<List<EmpleadoDataCollectionItem>>,
+            response: Response<List<EmpleadoDataCollectionItem>>
         ) {
-            servicioElegir.add("Seleccione el Servicio")
+            servicioElegir.add("Seleccione el Empleado")
             for(i in 0..(response.body()!!.size-1)){
-                servicioElegir.add(response.body()!!.get(i).idservicio.toString() + "|" + response.body()!!.get(i).nombreservicio)
+                servicioElegir.add(response.body()!!.get(i).idempleado.toString() + "|" + response.body()!!.get(i).nombreempleado)
                 val arrayAdapter: ArrayAdapter<*>
                 arrayAdapter = ArrayAdapter(this@CasoEmpleadoActivity,android.R.layout.simple_list_item_1,servicioElegir)
-                spnIdServicio.adapter = arrayAdapter
+                spnIdEmpleado.adapter = arrayAdapter
             }
 
 
@@ -137,7 +130,10 @@ private fun callServiceGetServicio()
             val casoempleadoInfo = CasoEmpleadoDataCollectionItem(
                 idcaso = 0, // Este se pone asi porque es automatico
               fechafinaltrabajoencaso = txtFechaFinalT.text.toString(),
-                fechainiciotrabajoencaso = txtFechaInicioT.text.toString()
+                fechainiciotrabajoencaso = txtFechaInicioT.text.toString(),
+                        idempleado = spnIdEmpleado.selectedItemId.toString().substring(0,1).toLong(),
+                descripcioncasoempleado = txtDescripCasoE.text.toString(),
+                idcasoempleado = txtIdCasoEmpleado.text.toString().toLong(),
 
             )
             addCasoEmpleado(casoempleadoInfo) {
@@ -249,9 +245,12 @@ private fun callServiceGetServicio()
     private fun callServicePutCasoEmpleado(idCaso:Long) {
 
         val casoempleadoInfo = CasoEmpleadoDataCollectionItem(
-            idcaso = 0, // Este se pone asi porque es automatico
+            idcaso = spnIdCaso.selectedItemId.toString().substring(0,1).toLong(),
             fechafinaltrabajoencaso = txtFechaFinalT.text.toString(),
-            fechainiciotrabajoencaso = txtFechaInicioT.text.toString()
+            fechainiciotrabajoencaso = txtFechaInicioT.text.toString(),
+            idcasoempleado = txtIdCasoEmpleado.text.toString().toLong(),
+            idempleado = spnIdEmpleado.selectedItemId.toString().substring(0,1).toLong(),
+            descripcioncasoempleado = txtDescripCasoE.text.toString()
         )
 
         val retrofit = RestEngine.buildService().create(CasoEmpleadoService::class.java)
