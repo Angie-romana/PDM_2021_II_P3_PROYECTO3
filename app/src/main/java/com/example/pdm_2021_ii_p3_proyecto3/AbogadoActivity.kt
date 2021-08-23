@@ -233,6 +233,12 @@ class AbogadoActivity : AppCompatActivity() {
     }
 
     private fun callServicePostEmpleado() {
+        if(estaVacio()){
+            return
+        }
+        if(noLoSuficienteLargo()){
+            return
+        }
         val claveSinEncriptar = txtClaveEmpleado.text.toString()
         val claveEncriptada = DigestUtils.md5Hex(claveSinEncriptar)
 
@@ -261,12 +267,6 @@ class AbogadoActivity : AppCompatActivity() {
 
 
     fun addEmpleado(empleadoData: EmpleadoDataCollectionItem, onResult: (EmpleadoDataCollectionItem?) -> Unit){
-        if(estaVacio()){
-            return
-        }
-        if(noLoSuficienteLargo()){
-            return
-        }
         val retrofit = RestEngine.buildService().create(EmpleadoService::class.java)
         var result: Call<EmpleadoDataCollectionItem> = retrofit.addEmpleado(empleadoData)
         result.enqueue(object : Callback<EmpleadoDataCollectionItem> {

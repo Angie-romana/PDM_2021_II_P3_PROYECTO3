@@ -58,7 +58,12 @@ class ClienteActivity : AppCompatActivity() {
     }
 
     private fun callServicePostCliente() {
-
+        if(estaVacio()){
+            return
+        }
+        if(noLoSuficienteLargo()){
+            return
+        }
         val clienteInfo = ClienteDataCollectionItem(
             idcliente = 0, // Este se pone asi porque es automatico
             nombrecliente = txtNombreCliente.text.toString(),

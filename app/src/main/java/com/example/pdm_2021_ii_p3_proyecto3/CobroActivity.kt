@@ -128,7 +128,7 @@ class CobroActivity : AppCompatActivity() {
         var result: Call<FacturaEncabezadoCollectionItem> = retrofit.updateFacturasEncabezado(facturaEncabezadoData)
         result.enqueue(object : Callback<FacturaEncabezadoCollectionItem> {
             override fun onFailure(call: Call<FacturaEncabezadoCollectionItem>, t: Throwable) {
-                Toast.makeText(this@CobroActivity,"Error",Toast.LENGTH_LONG).show()
+
             }
             override fun onResponse(call: Call<FacturaEncabezadoCollectionItem>,
                                     response: Response<FacturaEncabezadoCollectionItem>) {
@@ -157,7 +157,6 @@ class CobroActivity : AppCompatActivity() {
             if (it?.iddetalle != null) {
                 Toast.makeText(this,"Se ha añadido el servicio a la factura", Toast.LENGTH_LONG).show()
             } else {
-                Toast.makeText(this,"Error", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -273,7 +272,7 @@ class CobroActivity : AppCompatActivity() {
             if (it?.idfactura != null) {
                 Toast.makeText(this,"OK", Toast.LENGTH_LONG).show()
             } else {
-                Toast.makeText(this,"Error", Toast.LENGTH_LONG).show()
+
             }
         }
     }
@@ -565,7 +564,7 @@ class CobroActivity : AppCompatActivity() {
         var arrayAdapter: ArrayAdapter<*>
         result.enqueue(object : Callback<List<ServicioDataCollectionItem>> {
             override fun onFailure(call: Call<List<ServicioDataCollectionItem>>, t: Throwable) {
-                Toast.makeText(this@CobroActivity,"Error", Toast.LENGTH_LONG).show()
+
             }
 
             override fun onResponse(
